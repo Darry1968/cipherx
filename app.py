@@ -6,9 +6,13 @@ def base64_decode(cipher):
    decoded_bytes = base64.b64decode(cipher)
    decoded_string = decoded_bytes.decode('utf-8')
    return decoded_string
-   
-@app.route('/', methods=['GET','POST'])
+
+@app.route('/')
 def HomePage():
+    return render_template("index.html")
+
+@app.route('/encode', methods=['GET','POST'])
+def encode():
     if request.method == "POST":
         text = request.form["text"]
         if 'encrypt' in request.form:
