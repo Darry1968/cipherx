@@ -18,9 +18,9 @@ def HomePage():
         else:
             output = "Invalid request"
 
-        return render_template("index.html", output=output)
+        return render_template("base64.html", output=output)
     else:
-        return render_template("index.html")
+        return render_template("base64.html")
 
 if __name__ == '__main__':
     app.run(debug=True)
