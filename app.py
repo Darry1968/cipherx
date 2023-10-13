@@ -31,9 +31,21 @@ def base64_():
     else:
         return render_template("base64_.html")
     
-@app.route('/about')
-def about():
-    return render_template('about.html')
+@app.route('/rsa',methods=['GET','POST'])
+def rsa():
+    return render_template('rsa.html')
+
+@app.route('/Ceaser',methods=['GET','POST'])
+def Ceaser():
+    return render_template('Ceaser.html')
+
+@app.route('/Hill',methods=['GET','POST'])
+def Hill():
+    return render_template('Hill.html')
+
+@app.route('/Shift',methods=['GET','POST'])
+def Shift():
+    return render_template('Shift.html')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True,port=8080)
