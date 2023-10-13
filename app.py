@@ -47,5 +47,17 @@ def Hill():
 def Shift():
     return render_template('Shift.html')
 
+@app.route('/aes',methods=['GET','POST'])
+def aes():
+    return render_template('aes.html')
+
+@app.route('/des',methods=['GET','POST'])
+def des():
+    return render_template('des.html')
+
+@app.route('/chacha',methods=['GET','POST'])
+def chacha():
+    return render_template('chacha.html')
+
 if __name__ == '__main__':
     app.run(debug=True,port=8080)
