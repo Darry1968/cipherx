@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: "Lato", sans-serif;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+        }
+
+        header .logo {
+            font-size: 24px;
+        }
+
+        header .menu {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        header .menu li {
+            margin-left: 20px;
+        }
+
+        header .menu li:first-child {
+            margin-left: 0;
+        }
+
+        header .menu a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        header .menu-button {
+            display: none;
+            font-size: 24px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        footer {
+            background-color: #ac0505;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .sidenav {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+        .sidenav a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidenav a:hover {
+            color: #f1f1f1;
+        }
+
+        .sidenav .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+
+        header .logo img {
+            font-size: 24px;
+            font-weight: bold;
+            /* Example: Make the logo text bold */
+            color: #ffcc00;
+        }
+
+        @media screen and (max-height: 450px) {
+            .sidenav {
+                padding-top: 15px;
+            }
+
+            .sidenav a {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
+        <img src="logo1.png" alt="logo">
+        <div class="logo">CipherX</div>
+        <ul class="menu">
+            <li><a href="/">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+        <div class="menu-button" onclick="toggleDrawer()">&#9776;</div>
+    </header>
+
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="{{ url_for('rsa') }}">RSA</a>
+        <a href="{{ url_for('base64_') }}">Base64</a>
+        <a href="{{ url_for('md5') }}">MD5</a>
+        <a href="{{ url_for('Ceaser') }}">Ceaser</a>
+        <a href="{{ url_for('Hill') }}">Hill</a>
+        <a href="{{ url_for('Shift') }}">Shift</a>
+        <a href="{{ url_for('aes') }}">AES</a>
+        <a href="{{ url_for('des') }}">DES</a>
+        <a href="{{ url_for('chacha') }}">ChaCha</a>
+    </div>
+
+    {% block body %}
+
+    {% endblock body %}
+
+    <!-- Footer -->
+    <br><br>
+    <footer>
+        <p>&copy; 2023 CipherX ~ an initiative by CipherNiggas</p>
+    </footer>
+
+    <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
+    </script>
+</body>
+
+</html>

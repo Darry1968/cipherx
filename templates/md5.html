@@ -1,32 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
+{% block body %}
+<h2>MD5 decode testing</h2>
 
-<head>
-    <meta charset="UTF-8">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>test flask</title>
-</head>
-
-<body>
-    <h2>MD5 decode testing</h2>
-
-    <form action="/md5" method="post">
-        <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Input :</label>
-            <input type="text" class="form-control form-control-lg" id="exampleFormControlInput1" name="text"
-                placeholder="Enter your text here">
-        </div>
-        <input type="submit" class="btn btn-primary mb-3" name="encrypt" value="Encrypt">
-        <input type="submit" class="btn btn-primary mb-3" name="decrypt" value="Decrypt">
-    </form>
-    <br>
-    <label for="exampleFormControlOutput1" class="form-label">Output :</label>
-    <textarea id="textbox" name="textbox" rows="10" cols="50" spellcheck="false">
+<form action="/md5" method="post">
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Input :</label>
+        <input type="text" class="form-control form-control-lg" id="exampleFormControlInput1" name="text"
+            placeholder="Enter your text here">
+    </div>
+    <input type="submit" class="btn btn-primary mb-3" name="encrypt" value="Encrypt">
+    <input type="submit" class="btn btn-primary mb-3" name="decrypt" value="Decrypt">
+</form>
+<br>
+<label for="exampleFormControlOutput1" class="form-label">Output :</label>
+<textarea id="textbox" name="textbox" rows="10" cols="50" spellcheck="false">
         {% if output is defined %}
             {{output}}
-        {% endif %}
- </textarea>
-</body>
-
-</html>
+            {% endif %}
+        </textarea>
+{% endblock body %}
