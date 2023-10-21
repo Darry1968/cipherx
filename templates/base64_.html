@@ -1,6 +1,7 @@
-<div class="head">
+
     {% extends 'base.html' %}
     {% block body %}
+    <div class="head">
     <h2>Base64 decode testing</h2>
     <style>
         h2{
@@ -8,10 +9,11 @@
             background-color: #212F3C;
         }
         form{
-            background-color: black;
+            background-color: #070c13;
         }
         body{
-            background-color: black;
+            background-color: #070c13;
+
         }
         .container {
                 display: flex;
@@ -68,10 +70,8 @@
     
     <!-- <label for="exampleFormControlOutput1" class="form-label">Output :</label> -->
     
-    <textarea id="textbox" name="textbox" class="textbox" rows="10" cols="50" spellcheck="false">
-            {% if output is defined %}
-                {{output}}
-            {% endif %}
+    <textarea id="textbox" name="textbox" class="textbox" 
+    rows="10" cols="50" spellcheck="false">{% if output is defined %}{{output}}{% endif %}
      </textarea>
     </div>
     {% endblock body %}
