@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, url_for, redirect
 import base64,hashlib, itertools
+from rsa import rsa
 app = Flask(__name__)
 
 class Ciphers():
@@ -13,13 +14,14 @@ class Ciphers():
         decoded_string = decoded_bytes.decode('utf-8')
         return decoded_string
     
-    def md5_encrypt(self, text):
+    def md5_encode(self, text):
         md5_hash = hashlib.md5()
         md5_hash.update(text.encode('utf-8'))
         md5_hex = md5_hash.hexdigest()
         return md5_hex
     
-    def md5_decrypt(self,md5_hash,character_set,max_length):
+    def md5_decode(self,md5_hash, max_length):
+        character_set = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
         for length in range(1, max_length + 1):
             for candidate in itertools.product(character_set, repeat=length):
                 candidate_str = ''.join(candidate)
@@ -27,8 +29,27 @@ class Ciphers():
 
                 if candidate_hash == md5_hash:
                     return candidate_str
+        return None
+    
+    def caesar_encode(self,plaintext, shift):
+        encrypted_text = ""
+        for char in plaintext:
+            if char.isalpha():
+                is_upper = char.isupper()
+                char = char.lower()
+                shifted_char = chr(((ord(char) - ord('a') + shift) % 26) + ord('a'))
+                if is_upper:
+                    shifted_char = shifted_char.upper()
+                encrypted_text += shifted_char
+            else:
+                encrypted_text += char
+        return encrypted_text
+    
+    def caesar_decode(self,ciphertext, shift):
+        return self.caesar_encode(ciphertext, -shift)
 
 obj = Ciphers()
+obj_rsa = rsa()
 
 @app.route('/')
 def HomePage():
@@ -51,11 +72,40 @@ def base64_():
     
 @app.route('/rsa',methods=['GET','POST'])
 def rsa():
-    return render_template('rsa.html')
+    keys = {'public': '', 'private': ''}
+    if request.method == "POST":
+        p = int(request.form["p"])
+        q = int(request.form["q"])
+        e = int(request.form["e"])
+
+        if 'calc' in request.form:
+            public, private = obj_rsa.generate_key_pair(p=p, q=q, e=e)
+            keys['public'] = public
+            keys['private'] = private
+            return render_template("rsa.html", keys=keys)
+        
+        else:
+            output = "Invalid request"
+
+    else:
+        return render_template('rsa.html')
 
 @app.route('/Ceaser',methods=['GET','POST'])
 def Ceaser():
-    return render_template('Ceaser.html')
+    if request.method == "POST":
+        text = request.form["text"]
+        shift = int(request.form["shift"])
+        if 'encrypt' in request.form:
+            output = obj.caesar_encode(text,shift)
+        elif 'decrypt' in request.form:
+            output = obj.caesar_decode(text,shift)
+        else:
+            output = "Invalid request"
+
+        return render_template("Ceaser.html", output=output)
+    else:
+        return render_template('Ceaser.html')
+    
 
 @app.route('/Hill',methods=['GET','POST'])
 def Hill():
@@ -82,9 +132,9 @@ def md5():
     if request.method == "POST":
         text = request.form["text"]
         if 'encrypt' in request.form:
-            output = obj.md5_encrypt(text)
+            output = obj.md5_encode(text)
         elif 'decrypt' in request.form:
-            output = obj.base64_decode(text)
+            output = obj.md5_decode(text,5)
         else:
             output = "Invalid request"
 
