@@ -1,4 +1,31 @@
 {% extends 'base.html' %}
 {% block body %}
-<h1>under construction</h1>
+
+<h2>RSA encoding/decoding testing</h2>
+
+<form action="/rsa" method="post">
+    <div class="mb-3">
+        <label for="p" class="form-label">P:</label>
+        <input type="text" class="form-control form-control-lg" id="p" name="p" placeholder="Enter P">
+        <label for="q" class="form-label">Q:</label>
+        <input type="text" class="form-control form-control-lg" id="q" name="q" placeholder="Enter Q">
+        <label for="e" class="form-label">e:</label>
+        <input type="text" class="form-control form-control-lg" id="e" name="e" placeholder="Enter e">
+    </div>
+    <input type="submit" class="btn btn-primary" name="calc" value="Calculate N">
+    <!-- <input type="submit" class="btn btn-primary" name="decrypt" value="Decrypt"> -->
+</form>
+
+<br>
+<label for="public_key" class="form-label">Public key:</label>
+<textarea id="public_key" name="public_key" rows="1"
+    spellcheck="false">{% if keys is defined %}{{ keys.public}}{% endif %}</textarea>
+<br>
+<label for="private_key" class="form-label">Private key:</label>
+<textarea id="private_key" name="private_key" rows="1"
+    spellcheck="false">{% if keys is defined %}{{ keys.private}}{% endif %}</textarea>
+<br><br>
+
+
+
 {% endblock body %}
