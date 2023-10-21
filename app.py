@@ -47,6 +47,40 @@ class Ciphers():
     
     def caesar_decode(self,ciphertext, shift):
         return self.caesar_encode(ciphertext, -shift)
+    
+    def Shift_encode(self,text, shift):
+        encrypted_text = ""
+        for char in text:
+            if char.isalpha():
+                # Determine whether it's an uppercase or lowercase letter
+                is_upper = char.isupper()
+                char = char.lower()
+                # Apply the shift and wrap around the alphabet
+                char_code = ord(char) - ord('a')
+                char_code = (char_code + shift) % 26
+                char = chr(char_code + ord('a'))
+                # Convert back to uppercase if necessary
+                if is_upper:
+                    char = char.upper()
+            encrypted_text += char
+        return encrypted_text
+    
+    def Shift_decode(self,encrypted_text, shift):
+        decrypted_text = ""
+        for char in encrypted_text:
+            if char.isalpha():
+                # Determine whether it's an uppercase or lowercase letter
+                is_upper = char.isupper()
+                char = char.lower()
+                # Apply the reverse shift and wrap around the alphabet
+                char_code = ord(char) - ord('a')
+                char_code = (char_code - shift) % 26
+                char = chr(char_code + ord('a'))
+                # Convert back to uppercase if necessary
+                if is_upper:
+                    char = char.upper()
+            decrypted_text += char
+        return decrypted_text
 
 obj = Ciphers()
 obj_rsa = rsa()
@@ -113,7 +147,20 @@ def Hill():
 
 @app.route('/Shift',methods=['GET','POST'])
 def Shift():
-    return render_template('Shift.html')
+    if request.method == "POST":
+        text = request.form["text"]
+        shift = int(request.form["shift"])
+        if 'encrypt' in request.form:
+            output = obj.Shift_encode(text,shift)
+        elif 'decrypt' in request.form:
+            output = obj.Shift_decode(text,shift)
+        else:
+            output = "Invalid request"
+
+        return render_template("Shift.html", output=output)
+    else:
+        return render_template('Shift.html')
+    
 
 @app.route('/aes',methods=['GET','POST'])
 def aes():
