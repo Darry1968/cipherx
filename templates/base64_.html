@@ -3,77 +3,79 @@
     {% block body %}
     <h2>Base64 decode testing</h2>
     <style>
-        h2{
+        h2 {
             text-align: center;
             background-color: #212F3C;
         }
-        form{
+
+        form {
             background-color: black;
         }
-        body{
+
+        body {
             background-color: black;
         }
+
         .container {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                height: 50vh;
-            }
-            .textbox {
-                width: 300px;
-                height: 200px;
-                padding: 10px;
-                font-size: 16px;
-                resize: none;
-                border: 1px solid #ccc;
-                background-color: #212F3C ;
-            }
-            .buttons {
-                width: 300px;
-                margin-top: 10px;
-                display: flex;
-                justify-content: space-between;
-    
-            }
-            .button {
-                padding: 10px;
-                /* padding-left: 10px; */
-                font-size: 16px;
-                background-color: #009900;
-                color: white;
-                border: none;
-                cursor: pointer;
-            }
-            
-           
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50vh;
+        }
+
+        .textbox {
+            width: 300px;
+            height: 200px;
+            padding: 10px;
+            font-size: 16px;
+            resize: none;
+            border: 1px solid #ccc;
+            background-color: #212F3C;
+        }
+
+        .buttons {
+            width: 300px;
+            margin-top: 10px;
+            display: flex;
+            justify-content: space-between;
+
+        }
+
+        .button {
+            padding: 10px;
+            /* padding-left: 10px; */
+            font-size: 16px;
+            background-color: #009900;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
     </style>
+
     <body>
-    <form action="/base64_" method="post">
-    
-        <!-- <label for="exampleFormControlInput1" class="form-label">Input :</label>
+        <form action="/base64_" method="post">
+
+            <!-- <label for="exampleFormControlInput1" class="form-label">Input :</label>
         <label for="exampleFormControlOutput1" class="outputlabel">Output :</label> -->
-    
-        <div class="container">
-    
-            <!-- <label for="exampleFormControlInput1" class="form-label">Input :</label> -->
-            <input type="text" class="textbox" id="exampleFormControlInput1" 
-                   name="text" placeholder="Enter your text here">
-    
-        <div class="buttons">
-        <input type="submit" class="button" name="encrypt" value="Encrypt">
-        <input type="submit" class="button" name="decrypt" value="Decrypt">
-    </div>
-    </form>
-    <br>
-    
-    <!-- <label for="exampleFormControlOutput1" class="form-label">Output :</label> -->
-    
-    <textarea id="textbox" name="textbox" class="textbox" rows="10" cols="50" spellcheck="false">
-            {% if output is defined %}
-                {{output}}
-            {% endif %}
+
+            <div class="container">
+
+                <!-- <label for="exampleFormControlInput1" class="form-label">Input :</label> -->
+                <input type="text" class="textbox" id="exampleFormControlInput1" name="text"
+                    placeholder="Enter your text here">
+
+                <div class="buttons">
+                    <input type="submit" class="button" name="encrypt" value="Encrypt">
+                    <input type="submit" class="button" name="decrypt" value="Decrypt">
+                </div>
+        </form>
+        <br>
+
+        <!-- <label for="exampleFormControlOutput1" class="form-label">Output :</label> -->
+
+        <textarea id="textbox" name="textbox" class="textbox" rows="10" cols="50" spellcheck="false">{% if output is defined %}{{output}}{% endif %}
      </textarea>
-    </div>
-    {% endblock body %}
-    </div>
-    </body>
+</div>
+{% endblock body %}
+</div>
+</body>
