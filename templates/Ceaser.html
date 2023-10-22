@@ -18,10 +18,7 @@
 </form>
 <br>
 <label for="exampleFormControlOutput1" class="form-label">Output :</label>
-<textarea id="textbox" name="textbox" rows="10" cols="50" spellcheck="false">
-        {% if output is defined %}
-            {{output}}
-        {% endif %}
+<textarea id="textbox" name="textbox" rows="10" cols="50" spellcheck="false">{% if output is defined %}{{output}}{% endif %}
  </textarea>
 
 {% endblock body %}

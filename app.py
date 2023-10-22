@@ -1,6 +1,9 @@
 from flask import Flask, render_template, request, url_for, redirect
 import base64,hashlib, itertools
-from rsa import rsa
+from Crypto.Cipher import ChaCha20
+from Crypto.Random import get_random_bytes
+from Ciphers.rsa import rsa
+from Ciphers.HillCipher import HillCipher
 app = Flask(__name__)
 
 class Ciphers():
@@ -81,9 +84,16 @@ class Ciphers():
                     char = char.upper()
             decrypted_text += char
         return decrypted_text
+    
+    def Chacha_encode(text,cipher):
+        pass
+
+    def ChaCha_decode(ciphertext,cipher):
+        pass
 
 obj = Ciphers()
 obj_rsa = rsa()
+obj_hill = HillCipher()
 
 @app.route('/')
 def HomePage():
@@ -143,7 +153,24 @@ def Ceaser():
 
 @app.route('/Hill',methods=['GET','POST'])
 def Hill():
-    return render_template('Hill.html')
+    key = [[0,0],[0,0]]
+    if request.method == "POST":
+        text = request.form["text"]
+        key[0][0] = int(request.form["0"])
+        key[0][1] = int(request.form["1"])
+        key[1][0] = int(request.form["2"])
+        key[1][1] = int(request.form["3"])
+
+        if 'encrypt' in request.form:
+            output = obj_hill.encrypt(text,key)
+        elif 'decrypt' in request.form:
+            output = obj_hill.decrypt(text,key)
+        else:
+            output = "Invalid request"
+
+        return render_template("Hill.html", output=output)
+    else:
+        return render_template('Hill.html')
 
 @app.route('/Shift',methods=['GET','POST'])
 def Shift():
@@ -172,7 +199,27 @@ def des():
 
 @app.route('/chacha',methods=['GET','POST'])
 def chacha():
-    return render_template('chacha.html')
+    key = get_random_bytes(32)
+    nonce = get_random_bytes(12)
+    print(key)
+    print(nonce)
+    # create ChaCha20 cipher
+    cipher = ChaCha20.new(key=key, nonce=nonce)
+
+    if request.method == "POST":
+        text = request.form["text"]
+        shift = int(request.form["shift"])
+        if 'encrypt' in request.form:
+            output = obj.Shift_encode(text,shift)
+        elif 'decrypt' in request.form:
+            output = obj.Shift_decode(text,shift)
+        else:
+            output = "Invalid request"
+
+        return render_template("chacha.html", output=output)
+    else:
+        return render_template('chacha.html')
+    
 
 @app.route('/md5',methods=['GET','POST'])
 def md5():
