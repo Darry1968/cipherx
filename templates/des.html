@@ -1,4 +1,23 @@
 {% extends 'base.html' %}
 {% block body %}
-<h1>under construction</h1>
+<h2>DES encode/decode testing</h2>
+
+<form action="/des" method="post">
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Input :</label>
+        <input type="text" class="form-control form-control-lg" id="exampleFormControlInput1" name="text"
+            placeholder="Enter your text here">
+        <br><br>
+        <label for="exampleFormControlShift" class="form-label">Key (Minimum length 8):</label>
+        <input type="text" class="form-control form-control-lg" id="exampleFormControlInput2" name="key"
+            placeholder="Enter key value">
+        <br><br>
+    </div>
+    <input type="submit" class="btn btn-primary mb-3" name="encrypt" value="Encrypt">
+    <input type="submit" class="btn btn-primary mb-3" name="decrypt" value="Decrypt">
+</form>
+<br>
+<label for="exampleFormControlOutput1" class="form-label">Output :</label>
+<textarea id="textbox" name="textbox" rows="10" cols="50" spellcheck="false">{% if output is defined %}{{output}}{% endif %}
+ </textarea>
 {% endblock body %}
