@@ -15,7 +15,7 @@
         }
 
         header {
-            background-color: #000000;
+            background-color: #111111;
             color: #fff;
             display: flex;
             justify-content: space-between;
@@ -26,12 +26,13 @@
         header .logo {
             font-size: 24px;
             height: 10px;
+            
         }
 
         header .menu {
             list-style: none;
-            margin: 0;
-            padding: 0;
+            margin: 10px;
+            /* padding: 10px; */
             display: flex;
         }
 
@@ -112,20 +113,30 @@
                 font-size: 18px;
             }
         }
+        .menu{
+            margin-left: 10px;
+            padding-left: 10px;
+
+        }
+        img{
+            width: 100px;
+            height: 50px;
+
+        }
     </style>
 </head>
 
 <body>
     <!-- Header -->
     <header>
-
-        <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Menu</span>
-        <img src="static/logo.png" alt="logo">
-        <div class="logo">CipherX</div>
+        
+        <span class="menu" style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+        <img src="static/cipherxlogo.png" alt="logo">
+        <a href="/"  style="text-decoration:none; color: #fff; margin-right: 200px;">CipherX</a>
         <ul class="menu">
             <li><a href="/">Home</a></li>
             <li><a href="#">About</a></li>
-            <li><a href="#">Services</a></li>
+            <!-- <li><a href="#">Services</a></li> -->
             <li><a href="#">Contact</a></li>
         </ul>
         <div class="menu-button" onclick="toggleDrawer()">&#9776;</div>
