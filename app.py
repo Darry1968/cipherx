@@ -1,95 +1,8 @@
 from flask import Flask, render_template, request, url_for, redirect
-import base64,hashlib, itertools
-from Crypto.Cipher import ChaCha20
-from Crypto.Random import get_random_bytes
 from Ciphers.rsa import rsa
 from Ciphers.HillCipher import HillCipher
+from Ciphers.Allciphers import Ciphers
 app = Flask(__name__)
-
-class Ciphers():
-    def base64_encode(self,text):
-        encoded_bytes = base64.b64encode(text.encode('utf-8'))
-        encoded_string = encoded_bytes.decode('utf-8')
-        return encoded_string
-    
-    def base64_decode(self,cipher):
-        decoded_bytes = base64.b64decode(cipher)
-        decoded_string = decoded_bytes.decode('utf-8')
-        return decoded_string
-    
-    def md5_encode(self, text):
-        md5_hash = hashlib.md5()
-        md5_hash.update(text.encode('utf-8'))
-        md5_hex = md5_hash.hexdigest()
-        return md5_hex
-    
-    def md5_decode(self,md5_hash, max_length):
-        character_set = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-        for length in range(1, max_length + 1):
-            for candidate in itertools.product(character_set, repeat=length):
-                candidate_str = ''.join(candidate)
-                candidate_hash = hashlib.md5(candidate_str.encode('utf-8')).hexdigest()
-
-                if candidate_hash == md5_hash:
-                    return candidate_str
-        return None
-    
-    def caesar_encode(self,plaintext, shift):
-        encrypted_text = ""
-        for char in plaintext:
-            if char.isalpha():
-                is_upper = char.isupper()
-                char = char.lower()
-                shifted_char = chr(((ord(char) - ord('a') + shift) % 26) + ord('a'))
-                if is_upper:
-                    shifted_char = shifted_char.upper()
-                encrypted_text += shifted_char
-            else:
-                encrypted_text += char
-        return encrypted_text
-    
-    def caesar_decode(self,ciphertext, shift):
-        return self.caesar_encode(ciphertext, -shift)
-    
-    def Shift_encode(self,text, shift):
-        encrypted_text = ""
-        for char in text:
-            if char.isalpha():
-                # Determine whether it's an uppercase or lowercase letter
-                is_upper = char.isupper()
-                char = char.lower()
-                # Apply the shift and wrap around the alphabet
-                char_code = ord(char) - ord('a')
-                char_code = (char_code + shift) % 26
-                char = chr(char_code + ord('a'))
-                # Convert back to uppercase if necessary
-                if is_upper:
-                    char = char.upper()
-            encrypted_text += char
-        return encrypted_text
-    
-    def Shift_decode(self,encrypted_text, shift):
-        decrypted_text = ""
-        for char in encrypted_text:
-            if char.isalpha():
-                # Determine whether it's an uppercase or lowercase letter
-                is_upper = char.isupper()
-                char = char.lower()
-                # Apply the reverse shift and wrap around the alphabet
-                char_code = ord(char) - ord('a')
-                char_code = (char_code - shift) % 26
-                char = chr(char_code + ord('a'))
-                # Convert back to uppercase if necessary
-                if is_upper:
-                    char = char.upper()
-            decrypted_text += char
-        return decrypted_text
-    
-    def Chacha_encode(text,cipher):
-        pass
-
-    def ChaCha_decode(ciphertext,cipher):
-        pass
 
 obj = Ciphers()
 obj_rsa = rsa()
@@ -195,24 +108,31 @@ def aes():
 
 @app.route('/des',methods=['GET','POST'])
 def des():
-    return render_template('des.html')
+    if request.method == "POST":
+        text = request.form["text"]
+        key = request.form["key"]
+        if 'encrypt' in request.form:
+            output = obj.DES_encode(text,key)
+        elif 'decrypt' in request.form:
+            output = obj.DES_decode(text,key)
+        else:
+            output = "Invalid request"
+
+        return render_template("des.html", output=output)
+    else:
+        return render_template("des.html")
 
 @app.route('/chacha',methods=['GET','POST'])
 def chacha():
-    key = get_random_bytes(32)
-    nonce = get_random_bytes(12)
-    print(key)
-    print(nonce)
-    # create ChaCha20 cipher
-    cipher = ChaCha20.new(key=key, nonce=nonce)
+    key = b'\x13g\xb9~G\xa90\xeb\xe5\xd5\xc0\xec\xcc}yh\xa7\x86ad)\xb1)\x16"\xec\xf0\xa1\x82T\x98\x0e'
+    nonce = b'{\xddS\x812\xc7(\xf2ly\xaa\x00'
 
     if request.method == "POST":
         text = request.form["text"]
-        shift = int(request.form["shift"])
         if 'encrypt' in request.form:
-            output = obj.Shift_encode(text,shift)
+            output = obj.Chacha_encode(text,key,nonce)
         elif 'decrypt' in request.form:
-            output = obj.Shift_decode(text,shift)
+            output = obj.ChaCha_decode(text,key,nonce)
         else:
             output = "Invalid request"
 
