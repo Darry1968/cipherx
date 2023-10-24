@@ -104,7 +104,22 @@ def Shift():
 
 @app.route('/aes',methods=['GET','POST'])
 def aes():
-    return render_template('aes.html')
+    if request.method == "POST":
+        text = request.form["text"]
+        temp_key = request.form["key"]
+
+        key = obj.generate_aes_key(temp_key)
+        
+        if 'encrypt' in request.form:
+            output = obj.AES_encode(text,key)
+        elif 'decrypt' in request.form:
+            output = obj.AES_decode(text,key)
+        else:
+            output = "Invalid request"
+
+        return render_template("aes.html", output=output)
+    else:
+        return render_template("aes.html")
 
 @app.route('/des',methods=['GET','POST'])
 def des():

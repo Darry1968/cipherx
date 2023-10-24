@@ -1,6 +1,6 @@
 import base64,hashlib, itertools
-from Crypto.Cipher import ChaCha20,DES
-from Crypto.Random import get_random_bytes
+from Crypto.Cipher import ChaCha20,DES,AES
+from Crypto.Util.Padding import pad, unpad
 
 class Ciphers():
     def base64_encode(self,text):
@@ -135,8 +135,29 @@ class Ciphers():
         else:
             return "Incorrect key length"
         
-    def AES_encode():
-        pass
+    def generate_aes_key(self,key):
+        padd = b'ThisIspd'
+        key = bytes(key,'utf-8')
+        key = key[:8]
+        final_key = key+padd
+        return final_key
+    
+    def AES_encode(self,plaintext,key):
+        # plaintext to bytes
+        plaintext = bytes(plaintext,'utf-8')
 
-    def AES_decode():
-        pass
+        # cipher creation
+        cipher = AES.new(key, AES.MODE_CBC)
+        ciphertext = cipher.encrypt(pad(plaintext, AES.block_size))
+        final_CT = cipher.iv + ciphertext
+        return final_CT.hex()
+
+    def AES_decode(self,ciphertext,key):
+        # hex to bytes
+        ciphertext = bytes.fromhex(ciphertext)
+
+        iv = ciphertext[:AES.block_size]
+        ciphertext = ciphertext[AES.block_size:]
+        cipher = AES.new(key, AES.MODE_CBC, iv)
+        plaintext = unpad(cipher.decrypt(ciphertext), AES.block_size)
+        return plaintext.decode('utf-8')
