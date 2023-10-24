@@ -2,8 +2,8 @@
 {% block body %}
 <!-- Content -->
 <main>
-    <h2>Welcome to our homepage!</h2>
-    <p>This is the main content of the homepage.</p>
+    <!-- <h2>Welcome to our homepage!</h2>
+    <p>This is the main content of the homepage.</p> -->
 </main>
 <style>
     h2{
@@ -12,8 +12,76 @@
     p{
         color: white;
     }
+    .container{
+                width: 500px;
+                height: 300px;
+                padding: 10px;
+                font-size: 16px;
+
+                flex-direction: column;
+                text-align:center;
+                align-items: center;
+                /* resize: none; */
+                margin-left: 50px;
+                 margin-top: 50px;
+                margin-bottom: 20px;
+                border: 1px solid #ccc;
+                background-color: #212F3C ;
+            border-radius: 5px;
+    }
+    .btn{
+                padding: 10px;
+                /* padding-left: 10px; */
+                font-size: 16px;
+                background-color: rgba(3, 201, 13, 0.801);
+                color: white;
+                border: none;
+                cursor: pointer;
+                margin-bottom: 200px;
+                margin-left: 100px;
+                margin-top: 200px;
+                margin-left: 50x;
+                margin-right: 50px;
+                border-radius: 5px;
+    }
+    .textbox{
+                width: 250px;
+                height: 100px;
+                align-items: center;
+                padding: 10px;
+                font-size: 16px;
+                flex-direction: column;
+                text-align:center;
+                resize: none;
+                margin-left: 40px;
+                margin-right: 40px;
+                margin-bottom: 20px;
+                margin-top: 40px;
+                border-radius: 5px;
+                border: 1px solid #ccc;
+                background-color: #212F3C ;
+            }
+    .daddycontainer{
+        display: flex;
+    }
 </style>
 
-<h2>Animated Sidenav Example</h2>
-<p>Click on the element below to open the side navigation menu.</p>
+<!-- <h2>Animated Sidenav Example</h2>
+<p>Click on the element below to open the side navigation menu.</p> -->
+
+<div class="daddycontainer">
+    <div class="container">
+        <!-- <label for="p" class="form-label">:</label> -->
+        <input type="text" class="textbox" id="p" name="p" placeholder="Enter Text to Identify the cipher">
+    </div>
+
+    <input type="submit" class="btn" name="calc" value="Submit">
+    <!-- <input type="submit" class="btn btn-primary" name="decrypt" value="Decrypt"> -->
+
+<br>
+<div class="container">
+
+</div>
+</div>
+
 {% endblock body %}
