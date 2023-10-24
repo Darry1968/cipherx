@@ -2,30 +2,126 @@
 {% block body %}
 
 <h2>RSA encoding/decoding testing</h2>
-
+<style>
+    h2{
+        text-align: center;
+        color: white;
+        background-color: #212F3C;
+    }
+    body{
+        flex-direction: row;
+        /* display: flex; */
+    }
+   .container{
+                width: 500px;
+                height: 300px;
+                padding: 10px;
+                font-size: 16px;
+                flex-direction: column;
+                text-align:center;
+                /* resize: none; */
+                margin-left: 50px;
+                 margin-top: 50px;
+                margin-bottom: 20px;
+                border: 1px solid #ccc;
+                background-color: #212F3C ;
+            border-radius: 5px;
+    }
+    .container1{
+                width: 800px;
+                height: 200px;
+                padding: 10px;
+                font-size: 16px;
+               
+                flex-direction: column;
+                text-align:center;
+                /* resize: none; */
+                margin-left: 50px;
+                 margin-top: 50px;
+                margin-bottom: 20px;
+                border: 1px solid #ccc;
+                background-color: #212F3C ;
+            border-radius: 5px;
+    }
+    .textbox{
+                width: 250px;
+                height: 50px;
+                padding: 10px;
+                font-size: 16px;
+                flex-direction: column;
+                text-align:center;
+                resize: none;
+                margin-left: 40px;
+                margin-right: 40px;
+                margin-bottom: 20px;
+                margin-top: 10px;
+                border-radius: 5px;
+                border: 1px solid #ccc;
+                background-color: #212F3C ;
+            }
+            .btn{
+                padding: 10px;
+                /* padding-left: 10px; */
+                font-size: 16px;
+                background-color: rgba(3, 201, 13, 0.801);
+                color: white;
+                border: none;
+                cursor: pointer;
+                margin-bottom: 200px;
+                margin-left: 100px;
+                margin-top: 200px;
+                margin-left: 50x;
+                margin-right: 50px;
+                border-radius: 5px;
+                
+            }
+            .daddycontainer{
+                display:flex ;
+            }
+</style>
+<body>
+    <section class="encode">
 <form action="/rsa" method="post">
-    <div class="mb-3">
+    <div class="daddycontainer">
+    <div class="container">
         <label for="p" class="form-label">P:</label>
-        <input type="text" class="form-control form-control-lg" id="p" name="p" placeholder="Enter P">
+        <input type="text" class="textbox" id="p" name="p" placeholder="Enter P">
+        <br>
         <label for="q" class="form-label">Q:</label>
-        <input type="text" class="form-control form-control-lg" id="q" name="q" placeholder="Enter Q">
+        <input type="text" class="textbox" id="q" name="q" placeholder="Enter Q">
+        <br>
         <label for="e" class="form-label">e:</label>
-        <input type="text" class="form-control form-control-lg" id="e" name="e" placeholder="Enter e">
+        <input type="text" class="textbox" id="e" name="e" placeholder="Enter e">
     </div>
-    <input type="submit" class="btn btn-primary" name="calc" value="Calculate N">
+
+    <input type="submit" class="btn" name="calc" value="Calculate N">
     <!-- <input type="submit" class="btn btn-primary" name="decrypt" value="Decrypt"> -->
+
 </form>
 
 <br>
+<div class="container">
 <label for="public_key" class="form-label">Public key:</label>
-<textarea id="public_key" name="public_key" rows="1"
-    spellcheck="false">{% if keys is defined %}{{ keys.public}}{% endif %}</textarea>
-<br>
+<textarea id="public_key" class="textbox" name="public_key" 
+rows="1"spellcheck="false">{% if keys is defined %}{{ keys.public}}{% endif %}</textarea>
+<br><br>
 <label for="private_key" class="form-label">Private key:</label>
-<textarea id="private_key" name="private_key" rows="1"
+<textarea id="private_key" class="textbox" name="private_key" rows="1"
     spellcheck="false">{% if keys is defined %}{{ keys.private}}{% endif %}</textarea>
 <br><br>
-
+</div>
+</div>
+</section>
+<section class="cipherinfo">
+    <h2>What is RSA?</h2>
+    <p class="container1">RSA is a public-key cryptosystem that is widely used for secure data transmission. <br> <br>
+        It was first published in 1977 by Ron Rivest, Adi Shamir, and Leonard Adleman, and it is named after them. <br><br>
+        RSA works on the principle that it is easy to multiply large numbers, but difficult to factor large numbers. <br><br>
+        The public key consists of two large numbers, e and n, which are the product of two large prime numbers. <br><br>
+        The private key is a number, d, which is calculated using e and n and the two large prime numbers. <br><br>
+        </p>
+</section>
 
 
 {% endblock body %}
+</body>
