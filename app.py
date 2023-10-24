@@ -1,55 +1,12 @@
 from flask import Flask, render_template, request, url_for, redirect
-import base64,hashlib, itertools
-from rsa import rsa
+from Ciphers.rsa import rsa
+from Ciphers.HillCipher import HillCipher
+from Ciphers.Allciphers import Ciphers
 app = Flask(__name__)
-
-class Ciphers():
-    def base64_encode(self,text):
-        encoded_bytes = base64.b64encode(text.encode('utf-8'))
-        encoded_string = encoded_bytes.decode('utf-8')
-        return encoded_string
-    
-    def base64_decode(self,cipher):
-        decoded_bytes = base64.b64decode(cipher)
-        decoded_string = decoded_bytes.decode('utf-8')
-        return decoded_string
-    
-    def md5_encode(self, text):
-        md5_hash = hashlib.md5()
-        md5_hash.update(text.encode('utf-8'))
-        md5_hex = md5_hash.hexdigest()
-        return md5_hex
-    
-    def md5_decode(self,md5_hash, max_length):
-        character_set = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-        for length in range(1, max_length + 1):
-            for candidate in itertools.product(character_set, repeat=length):
-                candidate_str = ''.join(candidate)
-                candidate_hash = hashlib.md5(candidate_str.encode('utf-8')).hexdigest()
-
-                if candidate_hash == md5_hash:
-                    return candidate_str
-        return None
-    
-    def caesar_encode(self,plaintext, shift):
-        encrypted_text = ""
-        for char in plaintext:
-            if char.isalpha():
-                is_upper = char.isupper()
-                char = char.lower()
-                shifted_char = chr(((ord(char) - ord('a') + shift) % 26) + ord('a'))
-                if is_upper:
-                    shifted_char = shifted_char.upper()
-                encrypted_text += shifted_char
-            else:
-                encrypted_text += char
-        return encrypted_text
-    
-    def caesar_decode(self,ciphertext, shift):
-        return self.caesar_encode(ciphertext, -shift)
 
 obj = Ciphers()
 obj_rsa = rsa()
+obj_hill = HillCipher()
 
 @app.route('/')
 def HomePage():
@@ -109,23 +66,95 @@ def Ceaser():
 
 @app.route('/Hill',methods=['GET','POST'])
 def Hill():
-    return render_template('Hill.html')
+    key = [[0,0],[0,0]]
+    if request.method == "POST":
+        text = request.form["text"]
+        key[0][0] = int(request.form["0"])
+        key[0][1] = int(request.form["1"])
+        key[1][0] = int(request.form["2"])
+        key[1][1] = int(request.form["3"])
+
+        if 'encrypt' in request.form:
+            output = obj_hill.encrypt(text,key)
+        elif 'decrypt' in request.form:
+            output = obj_hill.decrypt(text,key)
+        else:
+            output = "Invalid request"
+
+        return render_template("Hill.html", output=output)
+    else:
+        return render_template('Hill.html')
 
 @app.route('/Shift',methods=['GET','POST'])
 def Shift():
-    return render_template('Shift.html')
+    if request.method == "POST":
+        text = request.form["text"]
+        shift = int(request.form["shift"])
+        if 'encrypt' in request.form:
+            output = obj.Shift_encode(text,shift)
+        elif 'decrypt' in request.form:
+            output = obj.Shift_decode(text,shift)
+        else:
+            output = "Invalid request"
+
+        return render_template("Shift.html", output=output)
+    else:
+        return render_template('Shift.html')
+    
 
 @app.route('/aes',methods=['GET','POST'])
 def aes():
-    return render_template('aes.html')
+    if request.method == "POST":
+        text = request.form["text"]
+        temp_key = request.form["key"]
+
+        key = obj.generate_aes_key(temp_key)
+        
+        if 'encrypt' in request.form:
+            output = obj.AES_encode(text,key)
+        elif 'decrypt' in request.form:
+            output = obj.AES_decode(text,key)
+        else:
+            output = "Invalid request"
+
+        return render_template("aes.html", output=output)
+    else:
+        return render_template("aes.html")
 
 @app.route('/des',methods=['GET','POST'])
 def des():
-    return render_template('des.html')
+    if request.method == "POST":
+        text = request.form["text"]
+        key = request.form["key"]
+        if 'encrypt' in request.form:
+            output = obj.DES_encode(text,key)
+        elif 'decrypt' in request.form:
+            output = obj.DES_decode(text,key)
+        else:
+            output = "Invalid request"
+
+        return render_template("des.html", output=output)
+    else:
+        return render_template("des.html")
 
 @app.route('/chacha',methods=['GET','POST'])
 def chacha():
-    return render_template('chacha.html')
+    key = b'\x13g\xb9~G\xa90\xeb\xe5\xd5\xc0\xec\xcc}yh\xa7\x86ad)\xb1)\x16"\xec\xf0\xa1\x82T\x98\x0e'
+    nonce = b'{\xddS\x812\xc7(\xf2ly\xaa\x00'
+
+    if request.method == "POST":
+        text = request.form["text"]
+        if 'encrypt' in request.form:
+            output = obj.Chacha_encode(text,key,nonce)
+        elif 'decrypt' in request.form:
+            output = obj.ChaCha_decode(text,key,nonce)
+        else:
+            output = "Invalid request"
+
+        return render_template("chacha.html", output=output)
+    else:
+        return render_template('chacha.html')
+    
 
 @app.route('/md5',methods=['GET','POST'])
 def md5():

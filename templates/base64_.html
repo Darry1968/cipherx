@@ -4,7 +4,7 @@
     <div class="head">
     <h2>Base64 decode</h2>
     <style>
-        h2{
+        h2 {
             text-align: center;
             background-color: #212F3C;
         }
@@ -14,7 +14,6 @@
         body{
             background-color: #070c13;
 
-        }
         .container {
                 display: flex;
                 justify-content: center;
@@ -51,11 +50,13 @@
             }
             
            
+
     </style>
+
     <body>
-    <form action="/base64_" method="post">
-    
-        <!-- <label for="exampleFormControlInput1" class="form-label">Input :</label>
+        <form action="/base64_" method="post">
+
+            <!-- <label for="exampleFormControlInput1" class="form-label">Input :</label>
         <label for="exampleFormControlOutput1" class="outputlabel">Output :</label> -->
     
         <div class="container">
@@ -76,7 +77,7 @@
     <textarea id="textbox" name="textbox" class="textbox" 
     rows="10" cols="50" spellcheck="false">{% if output is defined %}{{output}}{% endif %}
      </textarea>
-    </div>
-    {% endblock body %}
-    </div>
-    </body>
+</div>
+{% endblock body %}
+</div>
+</body>
