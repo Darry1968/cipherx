@@ -6,6 +6,8 @@
         h2 {
             text-align: center;
             background-color: #212F3C;
+            font-size: 30px;
+            color: #ccc;
         }
 
         form {
@@ -30,6 +32,7 @@
                 resize: none;
                 border: 1px solid #ccc;
                 background-color: #212F3C;
+                border-radius: 10px;
             }
 
             .buttons {
@@ -51,13 +54,47 @@
                 border: none;
                 cursor: pointer;
                 margin-bottom: 50px;
+                border-radius: 10px;
             }
         }
+        .container1{
+                width: 800px;
+                height: 300px;
+                padding: 10px;
+                font-size: 16px;
+                align-items: center ;
+                flex-direction: column;
+                text-align:center;
+                /* resize: none; */
+                margin-left: 50px;
+                 margin-top: 50px;
+                margin-bottom: 20px;
+                border: 1px solid #ccc;
+                background-color: #212F3C ;
+            border-radius: 5px;
+            display: flex;
+    }
+    .container2{
+        width: 800px;
+                height: 2000;
+                padding: 10px;
+                font-size: 16px;
+               
+                flex-direction: column;
+                text-align:center;
+                /* resize: none; */
+                margin-left: 50px;
+                 margin-top: 50px;
+                margin-bottom: 20px;
+                border: 1px solid #ccc;
+                background-color: #212F3C ;
+            border-radius: 5px;
+    }
     </style>
 
     <body>
         <form action="/base64_" method="post">
-
+            <section class="encode">
             <!-- <label for="exampleFormControlInput1" class="form-label">Input :</label>
         <label for="exampleFormControlOutput1" class="outputlabel">Output :</label> -->
 
@@ -79,6 +116,60 @@
         <textarea id="textbox" name="textbox" class="textbox" rows="10" cols="50" spellcheck="false">{% if output is defined %}{{output}}{% endif %}
      </textarea>
 </div>
+</section>
+
+<section class="cipherinfo">
+    <h2>What is Base 64?</h2>
+        <p class="container1" style="display: flex; 
+        line-height: 2; margin-left: 325px; margin-bottom: 50px;font-size: 20px;">
+        Base64 is a binary-to-text encoding scheme that represents binary data in an ASCII string format by translating it into a radix-64 representation. 
+        The term "Base64" originates from the fact that it uses a 64-character alphabet, which consists of the upper and lowercase letters A-Z, the numbers 0-9, and the symbols "+" and "/". <br>
+        Base64 is not a cryptographic cipher in the traditional sense, as it does not provide any encryption or decryption functionality. 
+        However, it is often used with other cryptographic ciphers, such as RSA, to encode and transmit data securely.
+        </p>
+
+    <h2>How does RSA work?</h2>
+        <p class="container2" style="line-height: 2; text-align: start; font-size: 20px; margin-left: 325px; ">
+<b> 3.1 Encoding Process</b> <br>
+1. Divide the Input Data: <br>
+   - Break the binary data into chunks of 3 bytes (24 bits). <br>
+2. Convert to 4 ASCII Characters: <br>
+   - Convert each 24-bit chunk into a set of four 6-bit values.
+3. Map to Base64 Characters: <br>
+   - Map each 6-bit value to its corresponding Base64 character.
+4. Padding (if necessary): <br>
+   - Add padding with '=' characters if the input data's length is not a multiple of 3 bytes.
+ <br><br>
+# 3.2 Example <br>
+Consider the string "Hello" in ASCII: <br>
+- ASCII Binary Representation: `01001000 01100101 01101100 01101100 01101111`
+- Grouped in 3 Bytes: `01001000 01100101 01101100` and `01101100 01101111`
+Converted to Base64: <br>
+1. `010010` `000110` `010101` `100110` `110110` `110011` `011011` `110011` `011011` `110111` <br>
+2. Encoded as Base64: `SGVsbG8=` <br>
+ <br> <br>
+4. Diagram <br>
+<img src="static/b64.png" alt="b64" style="width: 700px; height: 450px; border-radius: 10px; margin: 50px;">
+  
+5. Use Case in a Real-World Scenario <br><br>
+# 5.1 Email Attachments <br>
+- Scenario: Sending an Image via Email <br>
+  - Background: Alice wants to send a picture to Bob via email.
+  - Implementation: The image is converted to Base64 encoding. The Base64-encoded text is embedded into the email body. Bob's email client decodes the Base64 text to reconstruct the image.
+ <br><br>
+# 5.2 Data Storage in JSON <br>
+- Scenario: Storing Binary Data in JSON <br>
+  - Background: A web application needs to store binary data in a JSON object.
+  - Implementation: The binary data is Base64 encoded. The Base64-encoded string is included as a field in the JSON object. The client-side application decodes the Base64 string to retrieve the original binary data.
+ <br><br>
+# 5.3 URL Data <br>
+ - Scenario: Embedding Binary Data in URLs <br>
+  - Background: A web application needs to include binary data in a URL.
+  - Implementation: The binary data is Base64 encoded. The Base64-encoded string is added to the URL. The server-side application decodes the Base64 string to retrieve the original binary data.
+
+        </p>
+</section>
+
 {% endblock body %}
 </div>
 </body>

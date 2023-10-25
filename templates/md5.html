@@ -51,6 +51,39 @@
                 margin-bottom: 50px;
                 border-radius: 10px;
             }
+            .container1{
+                width: 800px;
+                height: 300px;
+                padding: 10px;
+                font-size: 16px;
+                align-items: center ;
+                flex-direction: column;
+                text-align:center;
+                /* resize: none; */
+                margin-left: 50px;
+                 margin-top: 50px;
+                margin-bottom: 20px;
+                border: 1px solid #ccc;
+                background-color: #212F3C ;
+            border-radius: 5px;
+            display: flex;
+    }
+    .container2{
+        width: 800px;
+                height: 2000;
+                padding: 10px;
+                font-size: 16px;
+               
+                flex-direction: column;
+                text-align:center;
+                /* resize: none; */
+                margin-left: 50px;
+                 margin-top: 50px;
+                margin-bottom: 20px;
+                border: 1px solid #ccc;
+                background-color: #212F3C ;
+            border-radius: 5px;
+    }
     
 </style>
 
@@ -64,7 +97,7 @@
     <input type="submit" class="btn btn-primary mb-3" name="decrypt" value="Decrypt">
 </form>
 <br> -->
-
+<section class="encode">
 <div class="container">
     <input type="text" class="textbox"  
            name="text" placeholder="Enter your text here">
@@ -83,6 +116,65 @@
             {% endif %}
         </textarea>
     </div>
+
+
+<section class="cipherinfo">
+    <h2>What is Base 64?</h2>
+    <p class="container1" style="display: flex; 
+    line-height: 2; margin-left: 325px; margin-bottom: 50px;font-size: 20px;">
+    
+    MD5 (Message Digest Algorithm 5) is a widely used cryptographic hash function designed by Ronald Rivest.  <br>
+    Despite its initial popularity, MD5 is now considered insecure for cryptographic purposes due to vulnerabilities that allow for collision attacks. <br>
+    However, it still finds applications in non-security-critical contexts.
+    </p>
+
+    <h2>How Does MD5 Work?</h2>
+    <p class="container2" style="line-height: 2; text-align: start; font-size: 20px; margin-left: 325px; ">
+        MD5 is a one-way hash function that produces a fixed-size (128-bit or 32-character) hash value, often represented as a hexadecimal number. <br>
+        The primary purpose of MD5 is to produce a unique hash value for a given input, making it suitable for data integrity verification. <br>
+
+        <br>
+       <b>How MD5 Works </b> <br><br>
+       # 3.1 Hashing Process <br>
+       1. Message Padding:
+          - The input message is padded to a length that is congruent to 448 modulo 512, ensuring it is 64 bits less than a multiple of 512.
+       2. Appending Length:
+          - The length of the original message is appended to the padded message as a 64-bit integer.
+       3. Initializing Constants:
+          - Four 32-bit words (A, B, C, D) are initialized with specific constant values.
+       4. Processing Blocks:
+          - The message is divided into blocks of 512 bits.
+          - Each block goes through a series of bitwise operations, logical functions, and additions that modify the values of A, B, C, and D.
+       5. Output:
+          - The final values of A, B, C, and D are concatenated to form the 128-bit hash value.
+       
+       # 3.2 Vulnerabilities
+       MD5 has vulnerabilities that allow for collision attacks, where different inputs produce the same hash value. This compromises the integrity of the hash function for cryptographic purposes.
+        
+       4. Diagram
+          
+       5. Use Case in a Real-World Scenario 
+       # 5.1 File Integrity Verification
+       - Scenario: Software Download Verification
+         - Background: Alice downloads a software installer from a website.
+         - Implementation: The website provides the MD5 hash value of the installer. After downloading, Alice calculates the MD5 hash of the installer. If the calculated hash matches the provided hash, the download is unaltered.
+        
+       #5.2 Password Storage (Not Recommended)
+       - Scenario: Storing Passwords in a Database
+         - Background: Bob manages a website and needs to store user passwords.
+         - Implementation: Bob hashes user passwords using MD5 before storing them. When users log in, the system hashes entered passwords and compares them to stored MD5 hashes. Note: MD5 is insecure for password hashing due to vulnerabilities; stronger alternatives like bcrypt are recommended.
+        
+       # 5.3 Digital Signatures (Historical)
+       - Scenario: Digital Signature for Software
+         - Background: Charlie wants to provide a digital signature for a software release.
+         - Implementation: Charlie calculates the MD5 hash of the software. The MD5 hash is then signed using a private key to create a digital signature. Note: MD5 is no longer recommended for digital signatures due to vulnerabilities; SHA-256 or higher is preferred.
+       
+    
+    </p>
+
+
+</section>
 {% endblock body %}
-   
+
+
 </body>
