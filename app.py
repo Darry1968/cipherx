@@ -10,7 +10,12 @@ obj_hill = HillCipher()
 
 @app.route('/')
 def HomePage():
-    return render_template("index.html")
+    if request.method == 'POST':
+        Ciphertext = request.form['CT']
+        output = obj.identify_cipher(Ciphertext)
+        return render_template('index.html',output=output)
+    else:
+        return render_template('index.html')
 
 @app.route('/base64_',methods=['GET','POST'])
 def base64_():
