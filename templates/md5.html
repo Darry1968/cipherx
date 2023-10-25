@@ -125,7 +125,8 @@
     
     MD5 (Message Digest Algorithm 5) is a widely used cryptographic hash function designed by Ronald Rivest.  <br>
     Despite its initial popularity, MD5 is now considered insecure for cryptographic purposes due to vulnerabilities that allow for collision attacks. <br>
-    However, it still finds applications in non-security-critical contexts.
+    However, it still finds applications in non-security-critical contexts. <br>
+    MD5 is a one-way hash function that produces a fixed-size (128-bit or 32-character) hash value, often represented as a hexadecimal number. 
     </p>
 
     <h2>How Does MD5 Work?</h2>
@@ -136,35 +137,36 @@
         <br>
        <b>How MD5 Works </b> <br><br>
        # 3.1 Hashing Process <br>
-       1. Message Padding:
-          - The input message is padded to a length that is congruent to 448 modulo 512, ensuring it is 64 bits less than a multiple of 512.
-       2. Appending Length:
-          - The length of the original message is appended to the padded message as a 64-bit integer.
-       3. Initializing Constants:
-          - Four 32-bit words (A, B, C, D) are initialized with specific constant values.
-       4. Processing Blocks:
-          - The message is divided into blocks of 512 bits.
-          - Each block goes through a series of bitwise operations, logical functions, and additions that modify the values of A, B, C, and D.
-       5. Output:
-          - The final values of A, B, C, and D are concatenated to form the 128-bit hash value.
-       
-       # 3.2 Vulnerabilities
+       1. Message Padding: <br>
+          - The input message is padded to a length that is congruent to 448 modulo 512, ensuring it is 64 bits less than a multiple of 512. <br>
+       2. Appending Length: <br>
+          - The length of the original message is appended to the padded message as a 64-bit integer. <br>
+       3. Initializing Constants: <br>
+          - Four 32-bit words (A, B, C, D) are initialized with specific constant values. <br>
+       4. Processing Blocks: <br>
+          - The message is divided into blocks of 512 bits. <br>
+          - Each block goes through a series of bitwise operations, logical functions, and additions that modify the values of A, B, C, and D. <br>
+       5. Output: <br>
+          - The final values of A, B, C, and D are concatenated to form the 128-bit hash value. 
+       <br><br>
+       # 3.2 Vulnerabilities <br>
        MD5 has vulnerabilities that allow for collision attacks, where different inputs produce the same hash value. This compromises the integrity of the hash function for cryptographic purposes.
-        
+        <br> <br>
        4. Diagram
-          
-       5. Use Case in a Real-World Scenario 
-       # 5.1 File Integrity Verification
+       <br><br>   
+       5. Use Case in a Real-World Scenario  <br>
+       # 5.1 File Integrity Verification <br>
+
        - Scenario: Software Download Verification
          - Background: Alice downloads a software installer from a website.
          - Implementation: The website provides the MD5 hash value of the installer. After downloading, Alice calculates the MD5 hash of the installer. If the calculated hash matches the provided hash, the download is unaltered.
-        
-       #5.2 Password Storage (Not Recommended)
+        <br><br>
+       #5.2 Password Storage (Not Recommended) <br>
        - Scenario: Storing Passwords in a Database
          - Background: Bob manages a website and needs to store user passwords.
          - Implementation: Bob hashes user passwords using MD5 before storing them. When users log in, the system hashes entered passwords and compares them to stored MD5 hashes. Note: MD5 is insecure for password hashing due to vulnerabilities; stronger alternatives like bcrypt are recommended.
-        
-       # 5.3 Digital Signatures (Historical)
+        <br><br>
+       # 5.3 Digital Signatures (Historical) <br>
        - Scenario: Digital Signature for Software
          - Background: Charlie wants to provide a digital signature for a software release.
          - Implementation: Charlie calculates the MD5 hash of the software. The MD5 hash is then signed using a private key to create a digital signature. Note: MD5 is no longer recommended for digital signatures due to vulnerabilities; SHA-256 or higher is preferred.
