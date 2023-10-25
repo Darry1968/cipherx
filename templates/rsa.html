@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block body %}
 
-<h2>RSA encoding/decoding testing</h2>
+<h2>RSA encoding/decoding</h2>
 <style>
     h2{
         font-size: 25px;
@@ -126,6 +126,11 @@
                 display: flex;
                 flex-direction: row;
             }
+            .aajibaicontainer{
+                display: flex;
+                flex-direction: row;
+            }
+            
             .textbox2{
                 width: 400px;
                 height: 250px;
@@ -151,7 +156,7 @@
         <label for="e" class="form-label">e:</label>
         <input type="text" class="textbox" id="e" name="e" placeholder="Enter e">
     </div>
-
+    
     <input type="submit" class="btn" name="calc" value="Calculate N">
     <!-- <input type="submit" class="btn btn-primary" name="decrypt" value="Decrypt"> -->
 
@@ -171,17 +176,39 @@ rows="1"spellcheck="false">{% if keys is defined %}{{ keys.public}}{% endif %}</
 <div class="mommycontainer">
 <div class="container">
     <!-- <label for="p" class="form-label"></label> -->
-    <input type="text" class="textbox2" id="p" name="p" placeholder="Enter the Message">
+    <input type="text" class="textbox" id="p" name="p" placeholder="Enter the Message">
+    <input type="text" class="textbox" id="p" name="p" placeholder="Enter the Pblic Key">
 </div>
+
 <div class="buttons">
     <input type="submit" class="btn2" name="encrypt" value="Encrypt">
-    <input type="submit" class="btn2" name="decrypt" value="Decrypt">
+    <!-- <input type="submit" class="btn2" name="decrypt" value="Decrypt"> -->
 </div>
 
+    <div class="container">
+        <textarea id="textbox" name="textbox2" class="textbox2" rows="10" cols="50" 
+        placeholder="Output" spellcheck="false">{% if output is defined %}{{output}}{% endif %}
+        </textarea></div>
+</div>
+
+<div class="aajibaicontainer">
+    <div class="container">
+        <!-- <label for="p" class="form-label"></label> -->
+        <input type="text" class="textbox" id="p" name="p" placeholder="Enter the ciphertext">
+        <input type="text" class="textbox" id="p" name="p" placeholder="Enter the Private Key">
+    </div>
+
+    <div class="buttons">
+        <!-- <input type="submit" class="btn2" name="encrypt" value="Encrypt"> -->
+        <input type="submit" class="btn2" name="decrypt" value="Decrypt">
+    </div>
 
 <div class="container">
-<textarea id="textbox" name="textbox2" class="textbox2" rows="10" cols="50" placeholder="Output" spellcheck="false">{% if output is defined %}{{output}}{% endif %}
+<textarea id="textbox" name="textbox2" class="textbox2" rows="10" cols="50" 
+placeholder="Output" spellcheck="false">{% if output is defined %}{{output}}{% endif %}
 </textarea></div>
+
+</div>
 </div>
 </div>
 </div>
