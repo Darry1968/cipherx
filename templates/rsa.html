@@ -4,6 +4,7 @@
 <h2>RSA encoding/decoding testing</h2>
 <style>
     h2{
+        font-size: 25px;
         text-align: center;
         color: white;
         background-color: #212F3C;
@@ -24,13 +25,15 @@
                 border: 1px solid #ccc;
                 background-color: #212F3C ;
             border-radius: 5px;
+    } .cipherinfo{
+        align-items: center;
     }
     .container1{
                 width: 800px;
                 height: 200px;
                 padding: 10px;
                 font-size: 16px;
-               
+                align-items: center ;
                 flex-direction: column;
                 text-align:center;
                 /* resize: none; */
@@ -40,10 +43,11 @@
                 border: 1px solid #ccc;
                 background-color: #212F3C ;
             border-radius: 5px;
+            display: flex;
     }
     .container2{
         width: 800px;
-                height: 2000px;
+                height: 2350px;
                 padding: 10px;
                 font-size: 16px;
                
@@ -75,8 +79,11 @@
             }
             .buttons{
                 flex-direction: column;
-                /* display: flex; */
-                align-items: center;
+                margin: 10px;
+                height: 300px;
+                margin  : 50px;
+                margin-top: 150px;
+                margin-left: 90px;
             }
             .btn{
                 padding: 10px;
@@ -94,12 +101,39 @@
                 border-radius: 5px;
                 
             }
+            .btn2{
+                padding: 10px;
+                /* padding-left: 10px; */
+                font-size: 16px;
+                background-color: rgba(3, 201, 13, 0.801);
+                color: white;
+                border: none;
+                cursor: pointer;
+                margin: 20px;
+                display: flex;
+                margin-left: 100x;
+                /* margin-bottom: 200px;
+                margin-left: 100px;
+                margin-top: 200px;
+                margin-right: 50px; */
+                border-radius: 5px;
+                
+            }
             .daddycontainer{
                 display:flex ;
             }
             .mommycontainer{
                 display: flex;
                 flex-direction: row;
+            }
+            .textbox2{
+                width: 400px;
+                height: 250px;
+                margin: 20px;
+                text-align: center;
+                border-radius: 5px;
+                border: 1px solid #ccc;
+                background-color: #212F3C ;
             }
             
 </style>
@@ -137,19 +171,19 @@ rows="1"spellcheck="false">{% if keys is defined %}{{ keys.public}}{% endif %}</
 <div class="mommycontainer">
 <div class="container">
     <!-- <label for="p" class="form-label"></label> -->
-    <input type="text" class="textbox" id="p" name="p" placeholder="Enter the Message">
+    <input type="text" class="textbox2" id="p" name="p" placeholder="Enter the Message">
 </div>
 <div class="buttons">
-    <input type="submit" class="btn" name="encrypt" value="Encrypt">
-    <input type="submit" class="btn" name="decrypt" value="Decrypt">
+    <input type="submit" class="btn2" name="encrypt" value="Encrypt">
+    <input type="submit" class="btn2" name="decrypt" value="Decrypt">
 </div>
 
-</div>
+
 <div class="container">
-<textarea id="textbox" name="textbox" class="textbox" rows="10" cols="50" placeholder="Output" spellcheck="false">{% if output is defined %}{{output}}{% endif %}
+<textarea id="textbox" name="textbox2" class="textbox2" rows="10" cols="50" placeholder="Output" spellcheck="false">{% if output is defined %}{{output}}{% endif %}
 </textarea></div>
 </div>
-
+</div>
 </div>
 </form>
 </section>
@@ -157,16 +191,18 @@ rows="1"spellcheck="false">{% if keys is defined %}{{ keys.public}}{% endif %}</
 
 <section class="cipherinfo">
     <h2>What is RSA?</h2>
-    <p class="container1">RSA is a public-key cryptosystem that is widely used for secure data transmission. <br> <br>
+    <p class="container1" style="display: flex;  margin-left: 325px; margin-bottom: 50px;">RSA is a public-key cryptosystem that is widely used for secure data transmission. <br> <br>
         It was first published in 1977 by Ron Rivest, Adi Shamir, and Leonard Adleman, and it is named after them. <br><br>
         RSA works on the principle that it is easy to multiply large numbers, but difficult to factor large numbers. <br><br>
         The public key consists of two large numbers, e and n, which are the product of two large prime numbers. <br><br>
         The private key is a number, d, which is calculated using e and n and the two large prime numbers. <br><br>
         </p>
         <h2>How does RSA work?</h2>
-        <p class="container2" style="line-height: 2; text-align: start;">
-           <b> # Key Generation</b><br>
-RSA key generation involves the following steps: <br>
+        <p class="container2" style="line-height: 2; text-align: start; margin-left: 325px; ">
+           <b style="font-size: 20px;"> # Key Generation</b><br> 
+           <img src="static/rsa2.png" alt="rsa2" style="width: 700px; height: 450px; border-radius: 10px; margin: 50px;">
+           <br>
+RSA key generation involves the following steps: <br>  
 - Prime Number Generation: <br>
   - Select two large prime numbers, p and q. <br>
 - Modulus Calculation: <br>
@@ -175,34 +211,35 @@ RSA key generation involves the following steps: <br>
   - Calculate ɸ(n) = (p - 1) x (q - 1). <br>
 - Public Key Exponent Selection: <br>
   - Choose a public exponent (e) that is coprime to ɸ(n).
-- Private Key Calculation:
+- Private Key Calculation: <br>
   - Determine a private exponent (d) such that d x e ≡ 1 (mod ɸ(n)).
- <br>
+ <br> <br>
 2.2 Encryption <br>
-- Sender obtains the recipient's public key (e, n).
-- Converts the plaintext message (M) to an integer m such that 0 < m < n.
-- Computes the ciphertext (C) using the formula C ≡ m^(e) (mod n).
-- Sends the ciphertext to the recipient.
+- Sender obtains the recipient's public key (e, n). <br>
+- Converts the plaintext message (M) to an integer m such that 0 < m < n. <br>
+- Computes the ciphertext (C) using the formula C ≡ m^(e) (mod n). <br>
+- Sends the ciphertext to the recipient. <br>
  <br>
-
+<br>
 2.3 Decryption <br>
-- Recipient uses their private key (d) to compute m from C using m ≡ C^(d) (mod n).
-- Converts m back to the original plaintext message (M).
+- Recipient uses their private key (d) to compute m from C using m ≡ C^(d) (mod n). <br>
+- Converts m back to the original plaintext message (M). <br>
 <br><b> 
-3. Diagram
+3. Diagram <br> <br> <br>
+<img src="static/rsa1.png" alt="rsa1" style="width: 700px; height: 300px; margin-left: 50px; border-radius: 10px; ">
 </b>  <br> <br>
-4. Use Case in a Real-World Scenario  <br>
+4. Use Case in a Real-World Scenario  <br> <br>
 4.1 Secure Communication <br>
-- Scenario: Secure Email Communication
-  - Background:  Alice wants to send a confidential email to Bob.
-  - Implementation: Bob generates a key pair and shares his public key with Alice. Alice encrypts the email using Bob's public key. Bob decrypts the email using his private key.
+- Scenario: Secure Email Communication <br>
+  - Background:  Alice wants to send a confidential email to Bob. <br>
+  - Implementation: Bob generates a key pair and shares his public key with Alice. Alice encrypts the email using Bob's public key. Bob decrypts the email using his private key. <br>
  <br>
 4.2 Digital Signatures <br>
 - Scenario: Digital Document Signing
   - Background: Alice wants to digitally sign a contract.
   - Implementation: Alice uses her private key to create a digital signature for the document. Anyone with Alice's public key can verify the authenticity of the signature.
- <br>
-### 4.3 Secure Online Transactions <br>
+ <br> <br>
+4.3 Secure Online Transactions <br>
 - Scenario: Secure Online Purchases
   - Background: Bob wants to make a secure online purchase.
   - Implementation: The online store provides its public key. Bob uses the store's public key to encrypt his payment information. Only the store, with its private key, can decrypt and process the payment.

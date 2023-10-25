@@ -29,6 +29,7 @@
                 resize: none;
                 border: 1px solid #ccc;
                 background-color: #212F3C ;
+                border-radius: 10px;
             }
             .buttons {
                 width: 300px;
@@ -48,6 +49,7 @@
                 border: none;
                 cursor: pointer;
                 margin-bottom: 50px;
+                border-radius: 10px;
             }
     
 </style>
@@ -74,7 +76,7 @@
 </form>
 <br>
 
-<label for="exampleFormControlOutput1" class="form-label">Output :</label>
+<!-- <label for="exampleFormControlOutput1" class="form-label">Output :</label> -->
 <textarea class="textbox" id="textbox" name="textbox" rows="10" cols="50" spellcheck="false">
         {% if output is defined %}
             {{output}}

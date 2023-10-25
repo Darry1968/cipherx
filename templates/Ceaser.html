@@ -14,6 +14,9 @@
             background-color: #070c13;
 
         }
+        input{
+            flex-direction: column;
+        }
         .container {
                 display: flex;
                 justify-content: center;
@@ -27,6 +30,7 @@
                 font-size: 16px;
                 text-align:center;
                 resize: none;
+                border-radius: 10px;
                 border: 1px solid #ccc;
                 background-color: #212F3C ;
             }
@@ -38,15 +42,37 @@
                 flex-direction: column;
                 text-align:center;
                 /* resize: none; */
-                margin-left: 50px;
-                margin-bottom: 20px;
+                margin-left: 10px;
+                margin-top: 10px;
+                margin-bottom: 10px;
+                margin-right: 10px;
                 border: 1px solid #ccc;
                 background-color: #212F3C ;
+                border-radius: 10px;
+            }
+            .container2{
+                width: 400px;
+                height: 200px;
+                padding: 10px;
+                font-size: 16px;
+                border-radius: 10px;
+                flex-direction: column;
+                text-align:center;
+                /* resize: none; */
+                /* margin-left: 50px;
+                 margin-top: 50px;
+                margin-bottom: 20px; */
+                align-items: center;
+                border: 1px solid #ccc;
+                background-color: #212F3C ;
+            border-radius: 10px;
+                flex-direction: column;
             }
             .buttons {
                 width: 300px;
                 margin-top: 10px;
                 display: flex;
+
                 flex-direction: column;
                 align-items: center;
                 /* justify-content: space-between; */
@@ -56,6 +82,7 @@
                 padding: 10px;
                 /* padding-left: 10px; */
                 font-size: 16px;
+                border-radius: 10px;
                 background-color: rgba(3, 201, 13, 0.801);
                 color: white;
                 border: none;
@@ -80,13 +107,13 @@
     <input type="submit" class="btn btn-primary mb-3" name="decrypt" value="Decrypt">
 </form>
 <br> -->
-
+<section class="encode">
 <div class="container">
-    <div class="input">
+    <div class="container2"> 
     <input type="text" class="textbox1"  
            name="text" placeholder="Enter your text here">
 
-           <label for="exampleFormControlShift" class="form-label">Shift value :</label>
+           <!-- <label for="exampleFormControlShift" class="form-label">Shift value :</label> -->
            <input type="text" class="textbox1" id="exampleFormControlInput1" name="shift"
                placeholder="Enter shift value">
             </div>
@@ -97,9 +124,19 @@
 </form>
 <br>
 
-<label for="exampleFormControlOutput1" class="form-label">Output :</label>
-<textarea id="textbox" name="textbox" rows="10" cols="50" spellcheck="false">{% if output is defined %}{{output}}{% endif %}
+<!-- <label for="exampleFormControlOutput1" class="form-label">Output :</label> -->
+<textarea class="textbox" name="textbox" rows="10" cols="50" spellcheck="false">{% if output is defined %}{{output}}{% endif %}
  </textarea>
 </div>
+</section>
+
+<section class="cipherinfo">
+    
+
+
+</section>
+
+
+
 {% endblock body %}
 </body>
