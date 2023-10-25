@@ -89,6 +89,39 @@
                 cursor: pointer;
                 margin-bottom: 50px;
             }
+            .container1{
+                width: 800px;
+                height: 200px;
+                padding: 10px;
+                font-size: 16px;
+                align-items: center ;
+                flex-direction: column;
+                text-align:center;
+                /* resize: none; */
+                margin-left: 50px;
+                 margin-top: 50px;
+                margin-bottom: 20px;
+                border: 1px solid #ccc;
+                background-color: #212F3C ;
+            border-radius: 5px;
+            display: flex;
+    }
+   .container3{
+        width: 800px;
+                height: 2350px;
+                padding: 10px;
+                font-size: 16px;
+               
+                flex-direction: column;
+                text-align:center;
+                /* resize: none; */
+                margin-left: 50px;
+                 margin-top: 50px;
+                margin-bottom: 20px;
+                border: 1px solid #ccc;
+                background-color: #212F3C ;
+            border-radius: 5px;
+    }
     
 </style>
 <form action="/Ceaser" method="post">
@@ -131,7 +164,54 @@
 </section>
 
 <section class="cipherinfo">
-    
+    <h2>What is Ceaser?</h2>
+    <p class="container1" style="display: flex;  
+    margin-left: 325px; font-size: 17px; line-height: 2; margin-bottom: 50px;">The Caesar cipher is one of the simplest and oldest encryption techniques. <br>
+    Named after Julius Caesar, who is believed to have used it for military communication, the cipher involves shifting each letter in the plaintext by a fixed number of positions down the alphabet. <br>
+    The Caesar cipher is a substitution cipher where each letter in the plaintext is replaced by a letter some fixed number of positions down or up the alphabet. <br>
+    It is a type of symmetric key encryption, meaning the same key is used for both encryption and decryption. <br>
+    </p>
+    <h2>How does Ceaser Cipher work?</h2>
+    <p class="container3" style="line-height: 2; text-align: start; margin-left: 325px; ">
+      <b>3.1 Encryption</b>  <br><br>
+1. Alphabet Shifting: <br>
+   - Choose a fixed number, often referred to as the "key" or "shift value." <br>
+   - Assign each letter a numerical value (A=0, B=1, ..., Z=25). <br><br>
+   - Shift each letter in the plaintext by the key value to obtain the ciphertext<br>
+2. Example:<br>
+   - If the key is 3, then A becomes D, B becomes E, and so on.<br>
+   - Plaintext: HELLO<br>
+   - Key: 3<br>
+   - Ciphertext: KHOOR<br>
+  <br>
+# 3.2 Decryption<br> <br>
+1. Reverse Shifting:<br> <br>
+   - To decrypt, shift each letter in the ciphertext backward by the key value.<br> <br>
+2. Example: <br>
+   - If the key is 3, then D becomes A, E becomes B, and so on. <br>
+   - Ciphertext: KHOOR <br>
+   - Key: 3 <br>
+   - Decrypted Text: HELLO <br>
+  <br>
+4. Diagram <br>
+   <br>
+5. Use Case in a Real-World Scenario <br>
+# 5.1 Historical Military Communication <br>
+- Scenario: Ancient Military Communication <br>
+  - Background: Julius Caesar wants to send confidential orders to his generals. <br>
+  - Implementation: Caesar uses a fixed key (shift value) to encrypt his messages.  Generals receive the ciphertext and use the same key to decrypt and read the orders. <br>
+  <br>
+# 5.2 Educational Purposes <br>
+- Scenario: Introduction to Cryptography <br>
+  - Background: Alice is teaching a cryptography class for beginners.   <br>
+  - Implementation: Alice introduces the Caesar cipher as a simple encryption technique. Students practice encryption and decryption using different shift values. <br>
+  <br>
+# 5.3 Basic Data Obfuscation <br>
+- Scenario: Password Obfuscation (Not Recommended for Security) <br>
+  - Background: Bob wants to obfuscate a password stored in a non-secure environment. <br>
+  - Implementation: Bob shifts each character in the password by a fixed key. Note: Caesar cipher is not suitable for secure password hashing; modern hash functions like bcrypt are recommended. <br>
+
+    </p>
 
 
 </section>
