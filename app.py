@@ -10,7 +10,12 @@ obj_hill = HillCipher()
 
 @app.route('/')
 def HomePage():
-    return render_template("index.html")
+    if request.method == 'POST':
+        Ciphertext = request.form['CT']
+        output = obj.identify_cipher(Ciphertext)
+        return render_template('index.html',output=output)
+    else:
+        return render_template('index.html')
 
 @app.route('/base64_',methods=['GET','POST'])
 def base64_():
@@ -31,22 +36,61 @@ def base64_():
 def rsa():
     keys = {'public': '', 'private': ''}
     if request.method == "POST":
-        p = int(request.form["p"])
-        q = int(request.form["q"])
-        e = int(request.form["e"])
-
         if 'calc' in request.form:
+            p = int(request.form["p"])
+            q = int(request.form["q"])
+            e = int(request.form["e"])
+            if e < 1 and e > p * q:
+                print("hello")
+                return f"Value of e should be in between 1 < e < {p*q}"
             public, private = obj_rsa.generate_key_pair(p=p, q=q, e=e)
             keys['public'] = public
             keys['private'] = private
             return render_template("rsa.html", keys=keys)
-        
         else:
             output = "Invalid request"
 
     else:
         return render_template('rsa.html')
 
+@app.route('/rsa/encode',methods=['POST'])
+def rsa_encode():
+    key = {'public':''}
+    global encrypted_msg
+    if 'encrypt' in request.form:
+        text = request.form["text"]
+        public = request.form["PubK"]
+
+        # make pair
+        a,b = public.split(',')
+        temp = (int(a),int(b))
+        key['public'] = temp
+        
+        #encrypt 
+        encrypted_msg = obj_rsa.encrypt(key['public'],text)
+        output = ''.join(map(lambda x: str(x), encrypted_msg))
+
+        return render_template("rsa.html",Encrypted=output)
+    
+@app.route('/rsa/decode',methods=['POST'])
+def rsa_decode():
+    key = {'private':''}
+    if 'decrypt' in request.form:
+        text = request.form["text"]
+        # convert text into list to make it iteraable
+        # text = [int(x) for x in text]
+        # print(text)
+        private = request.form["PriK"]
+
+        # make pair
+        a,b = private.split(',')
+        temp = (int(a),int(b))
+        key['private'] = temp
+
+        output = obj_rsa.decrypt(key['private'],encrypted_msg)
+
+        return render_template("rsa.html",Decrypted=output)
+    
 @app.route('/Ceaser',methods=['GET','POST'])
 def Ceaser():
     if request.method == "POST":
