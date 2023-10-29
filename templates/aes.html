@@ -1,23 +1,165 @@
 {% extends 'base.html' %}
 {% block body %}
 <h2>AES encode/decode testing</h2>
+<style>
+    h2 {
+        text-align: center;
+        color: white;
+        background-color: #212F3C;
+    }
 
-<form action="/AES" method="post">
+    form {
+        background-color: #070c13;
+    }
+
+    body {
+        background-color: #070c13;
+
+    }
+
+    input {
+        flex-direction: column;
+    }
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 50vh;
+    }
+
+    .textbox {
+        width: 300px;
+        height: 200px;
+        padding: 10px;
+        font-size: 16px;
+        text-align: center;
+        resize: none;
+        border-radius: 10px;
+        border: 1px solid #ccc;
+        background-color: #212F3C;
+    }
+
+    .textbox1 {
+        width: 300px;
+        height: 50px;
+        padding: 10px;
+        font-size: 16px;
+        flex-direction: column;
+        text-align: center;
+        /* resize: none; */
+        margin-left: 10px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        margin-right: 10px;
+        border: 1px solid #ccc;
+        background-color: #212F3C;
+        border-radius: 10px;
+    }
+
+    .container2 {
+        width: 400px;
+        height: 200px;
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 10px;
+        flex-direction: column;
+        text-align: center;
+        /* resize: none; */
+        /* margin-left: 50px;
+                 margin-top: 50px;
+                margin-bottom: 20px; */
+        align-items: center;
+        border: 1px solid #ccc;
+        background-color: #212F3C;
+        border-radius: 10px;
+        flex-direction: column;
+    }
+
+    .buttons {
+        width: 300px;
+        margin-top: 10px;
+        display: flex;
+
+        flex-direction: column;
+        align-items: center;
+        /* justify-content: space-between; */
+
+    }
+
+    .button {
+        padding: 10px;
+        /* padding-left: 10px; */
+        font-size: 16px;
+        border-radius: 10px;
+        background-color: rgba(3, 201, 13, 0.801);
+        color: white;
+        border: none;
+        cursor: pointer;
+        margin-bottom: 50px;
+    }
+
+    .container1 {
+        width: 800px;
+        height: 200px;
+        padding: 10px;
+        font-size: 16px;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+        /* resize: none; */
+        margin-left: 50px;
+        margin-top: 50px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        background-color: #212F3C;
+        border-radius: 5px;
+        display: flex;
+    }
+
+    .container3 {
+        width: 800px;
+        height: 2350px;
+        padding: 10px;
+        font-size: 16px;
+
+        flex-direction: column;
+        text-align: center;
+        /* resize: none; */
+        margin-left: 50px;
+        margin-top: 50px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        background-color: #212F3C;
+        border-radius: 5px;
+    }
+</style>
+<form action="/aes" method="post">
     <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">Input :</label>
-        <input type="text" class="form-control form-control-lg" id="exampleFormControlInput1" name="text"
-            placeholder="Enter your text here">
-        <br><br>
-        <label for="exampleFormControlShift" class="form-label">Key (Minimum length 8):</label>
-        <input type="text" class="form-control form-control-lg" id="exampleFormControlInput2" name="key"
-            placeholder="Enter key value">
-        <br><br>
-    </div>
-    <input type="submit" class="btn btn-primary mb-3" name="encrypt" value="Encrypt">
-    <input type="submit" class="btn btn-primary mb-3" name="decrypt" value="Decrypt">
+        <section class="encode">
+            <div class="container">
+                <div class="container2">
+                    <input type="text" class="textbox1" name="text" placeholder="Enter your text here">
+
+                    <!-- <label for="exampleFormControlShift" class="form-label">Shift value :</label> -->
+                    <input type="text" class="textbox1" id="exampleFormControlInput1" name="key"
+                        placeholder="Enter key value (Minimum length 8)">
+                </div>
+                <div class="buttons">
+                    <input type="submit" class="button" name="encrypt" value="Encrypt">
+                    <input type="submit" class="button" name="decrypt" value="Decrypt">
+                </div>
 </form>
 <br>
-<label for="exampleFormControlOutput1" class="form-label">Output :</label>
-<textarea id="textbox" name="textbox" rows="10" cols="50" spellcheck="false">{% if output is defined %}{{output}}{% endif %}
- </textarea>
+
+<!-- <label for="exampleFormControlOutput1" class="form-label">Output :</label> -->
+<textarea class="textbox" name="textbox" rows="10" cols="50" spellcheck="false">{% if output is defined %}{{output}}{% endif %}
+     </textarea>
+</div>
+</section>
+<section class="cipherinfo">
+
+    <h2></h2>
+
+</section>
 {% endblock body %}
