@@ -167,8 +167,8 @@ def AES():
     else:
         return render_template("aes.html")
 
-@app.route('/des',methods=['GET','POST'])
-def des():
+@app.route('/DES',methods=['GET','POST'])
+def DES():
     if request.method == "POST":
         text = request.form["text"]
         key = request.form["key"]
