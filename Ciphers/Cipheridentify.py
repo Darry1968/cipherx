@@ -65,4 +65,6 @@ class CipherIdentify():
         cipher_recognitions.append(self.identify_des_cipher(cipher_text))
         # Add similar functions for other ciphers
 
+        # higher percentage to lower percentage
+        cipher_recognitions.sort(key=lambda x: x[1], reverse=True)
         return cipher_recognitions
