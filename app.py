@@ -2,17 +2,19 @@ from flask import Flask, render_template, request, url_for, redirect
 from Ciphers.rsa import rsa
 from Ciphers.HillCipher import HillCipher
 from Ciphers.Allciphers import Ciphers
+from Ciphers.Cipheridentify import CipherIdentify
 app = Flask(__name__)
 
 obj = Ciphers()
 obj_rsa = rsa()
 obj_hill = HillCipher()
+obj_CT = CipherIdentify()
 
-@app.route('/')
+@app.route('/', methods=['GET','POST'])
 def HomePage():
     if request.method == 'POST':
         Ciphertext = request.form['CT']
-        output = obj.identify_cipher(Ciphertext)
+        output = obj_CT.identify_cipher(Ciphertext)
         return render_template('index.html',output=output)
     else:
         return render_template('index.html')

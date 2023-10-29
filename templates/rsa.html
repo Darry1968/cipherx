@@ -3,7 +3,7 @@
 
 <h2>RSA encoding/decoding</h2>
 <style>
-    h2{
+    h2 {
         font-size: 25px;
         text-align: center;
         color: white;
@@ -11,271 +11,270 @@
         padding-top: 10px;
         padding-bottom: 10px;
     }
-   .container{
-                width: 500px;
-                height: 300px;
-                padding: 10px;
-                font-size: 16px;
-                flex-direction: column;
-                text-align:center;
-                /* resize: none; */
-                margin-left: 50px;
-                 margin-top: 50px;
-                margin-bottom: 20px;
-                border: 1px solid #ccc;
-                background-color: #212F3C ;
-            border-radius: 5px;
-    } 
-    .cipherinfo{
-        align-items: center;
-    }
-    .container1{
-                width: 800px;
-                height: 200px;
-                padding: 10px;
-                font-size: 16px;
-                align-items: center ;
-                flex-direction: column;
-                text-align:center;
-                /* resize: none; */
-                margin-left: 50px;
-                 margin-top: 50px;
-                margin-bottom: 20px;
-                border: 1px solid #ccc;
-                background-color: #212F3C ;
-            border-radius: 5px;
-            display: flex;
-    }
-    .container2{
+
+    .container1 {
         width: 800px;
-                height: 2350px;
-                padding: 10px;
-                font-size: 16px;
-               
-                flex-direction: column;
-                text-align:center;
-                /* resize: none; */
-                margin-left: 50px;
-                 margin-top: 50px;
-                margin-bottom: 20px;
-                border: 1px solid #ccc;
-                background-color: #212F3C ;
-            border-radius: 5px;
+        height: 200px;
+        padding: 10px;
+        font-size: 16px;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+        /* resize: none; */
+        margin-left: 50px;
+        margin-top: 50px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        background-color: #212F3C;
+        border-radius: 5px;
+        display: flex;
     }
-    .textbox{
-                width: 250px;
-                height: 50px;
-                padding: 10px;
-                font-size: 16px;
-                flex-direction: column;
-                text-align:center;
-                resize: none;
-                margin-left: 40px;
-                margin-right: 40px;
-                margin-bottom: 20px;
-                margin-top: 10px;
-                border-radius: 5px;
-                border: 1px solid #ccc;
-                background-color: #212F3C ;
-            }
-            .buttons{
-                flex-direction: column;
-                margin: 10px;
-                height: 300px;
-                margin  : 50px;
-                margin-top: 150px;
-                margin-left: 90px;
-            }
-            .btn{
-                padding: 10px;
-                /* padding-left: 10px; */
-                font-size: 16px;
-                background-color: rgba(3, 201, 13, 0.801);
-                color: white;
-                border: none;
-                cursor: pointer;
-                margin-bottom: 200px;
-                margin-left: 100px;
-                margin-top: 200px;
-                margin-left: 50x;
-                margin-right: 50px;
-                border-radius: 5px;
-                
-            }
-            .btn2{
-                padding: 10px;
-                /* padding-left: 10px; */
-                font-size: 16px;
-                background-color: rgba(3, 201, 13, 0.801);
-                color: white;
-                border: none;
-                cursor: pointer;
-                margin: 20px;
-                display: flex;
-                margin-left: 100x;
-                /* margin-bottom: 200px;
+
+    .container2 {
+        width: 800px;
+        height: 2350px;
+        padding: 10px;
+        font-size: 16px;
+
+        flex-direction: column;
+        text-align: center;
+        /* resize: none; */
+        margin-left: 50px;
+        margin-top: 50px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        background-color: #212F3C;
+        border-radius: 5px;
+    }
+
+    .textbox {
+        width: 250px;
+        height: 50px;
+        padding: 10px;
+        font-size: 16px;
+        flex-direction: column;
+        text-align: center;
+        resize: none;
+        margin-left: 40px;
+        margin-right: 40px;
+        margin-bottom: 20px;
+        margin-top: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        background-color: #212F3C;
+    }
+
+    .buttons {
+        flex-direction: column;
+        margin: 10px;
+        height: 300px;
+        margin: 50px;
+        margin-top: 150px;
+        margin-left: 90px;
+    }
+
+    .btn {
+        padding: 10px;
+        /* padding-left: 10px; */
+        font-size: 16px;
+        background-color: rgba(3, 201, 13, 0.801);
+        color: white;
+        border: none;
+        cursor: pointer;
+        margin-bottom: 200px;
+        margin-left: 100px;
+        margin-top: 200px;
+        margin-left: 50x;
+        margin-right: 50px;
+        border-radius: 5px;
+
+    }
+
+    .btn2 {
+        padding: 10px;
+        /* padding-left: 10px; */
+        font-size: 16px;
+        background-color: rgba(3, 201, 13, 0.801);
+        color: white;
+        border: none;
+        cursor: pointer;
+        margin: 20px;
+        display: flex;
+        margin-left: 100x;
+        /* margin-bottom: 200px;
                 margin-left: 100px;
                 margin-top: 200px;
                 margin-right: 50px; */
-                border-radius: 5px;
-                
-            }
-            .daddycontainer{
-                display:flex ;
-            }
-            .mommycontainer{
-                display: flex;
-                flex-direction: row;
-            }
-            .aajibaicontainer{
-                display: flex;
-                flex-direction: row;
-            }
-            
-            .textbox2{
-                width: 400px;
-                height: 250px;
-                margin: 20px;
-                text-align: center;
-                border-radius: 5px;
-                border: 1px solid #ccc;
-                background-color: #212F3C ;
-            }
-            
+        border-radius: 5px;
+
+    }
+
+    .daddycontainer {
+        display: flex;
+    }
+
+    .mommycontainer {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .aajibaicontainer {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .textbox2 {
+        width: 400px;
+        height: 250px;
+        margin: 20px;
+        text-align: center;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        background-color: #212F3C;
+    }
 </style>
+
 <body>
     <section class="encode">
-<form action="/rsa" method="post">
-    <div class="daddycontainer">
-    <div class="container">
-        <label for="p" class="form-label">P:</label>
-        <input type="text" class="textbox" id="p" name="p" placeholder="Enter P">
+        <form action="/rsa" method="post">
+            <div class="daddycontainer">
+                <div class="container">
+                    <label for="p" class="form-label">P:</label>
+                    <input type="text" class="textbox" id="p" name="p" placeholder="Enter P">
+                    <br>
+                    <label for="q" class="form-label">Q:</label>
+                    <input type="text" class="textbox" id="q" name="q" placeholder="Enter Q">
+                    <br>
+                    <label for="e" class="form-label">e:</label>
+                    <input type="text" class="textbox" id="e" name="e" placeholder="Enter e">
+                </div>
+
+                <input type="submit" class="btn" name="calc" value="Calculate N">
+                <!-- <input type="submit" class="btn btn-primary" name="decrypt" value="Decrypt"> -->
+        </form>
         <br>
-        <label for="q" class="form-label">Q:</label>
-        <input type="text" class="textbox" id="q" name="q" placeholder="Enter Q">
-        <br>
-        <label for="e" class="form-label">e:</label>
-        <input type="text" class="textbox" id="e" name="e" placeholder="Enter e">
-    </div>
-    
-    <input type="submit" class="btn" name="calc" value="Calculate N">
-    <!-- <input type="submit" class="btn btn-primary" name="decrypt" value="Decrypt"> -->
+        <div class="container">
+            <label for="public_key" class="form-label">Public key:</label>
+            <textarea id="public_key" class="textbox" name="public_key" rows="1"
+                spellcheck="false">{% if keys is defined %}{{ keys.public}}{% endif %}</textarea>
+            <br><br>
+            <label for="private_key" class="form-label">Private key:</label>
+            <textarea id="private_key" class="textbox" name="private_key" rows="1"
+                spellcheck="false">{% if keys is defined %}{{ keys.private}}{% endif %}</textarea>
+            <br><br>
+        </div>
+        </div>
 
-<br>
-<div class="container">
-<label for="public_key" class="form-label">Public key:</label>
-<textarea id="public_key" class="textbox" name="public_key" 
-rows="1"spellcheck="false">{% if keys is defined %}{{ keys.public}}{% endif %}</textarea>
-<br><br>
-<label for="private_key" class="form-label">Private key:</label>
-<textarea id="private_key" class="textbox" name="private_key" rows="1"
-    spellcheck="false">{% if keys is defined %}{{ keys.private}}{% endif %}</textarea>
-<br><br>
-</div>
-</div>
+        <form action="/rsa/encode" method="post">
+            <div class="mommycontainer">
+                <div class="container">
+                    <!-- <label for="p" class="form-label"></label> -->
+                    <input type="text" class="textbox" id="p" name="text" placeholder="Enter the Message">
+                    <input type="text" class="textbox" id="p" name="PubK" placeholder="Enter the Public Key">
+                </div>
 
-<div class="mommycontainer">
-<div class="container">
-    <!-- <label for="p" class="form-label"></label> -->
-    <input type="text" class="textbox" id="p" name="p" placeholder="Enter the Message">
-    <input type="text" class="textbox" id="p" name="p" placeholder="Enter the Pblic Key">
-</div>
+                <div class="buttons">
+                    <input type="submit" class="btn2" name="encrypt" value="Encrypt">
+                </div>
+                <div class="container">
+                    <textarea id="textbox" name="textbox2" class="textbox2" rows="10" cols="50" placeholder="Output"
+                        spellcheck="false">{% if Encrypted is defined %}{{Encrypted}}{% endif %}
+                </textarea>
+                </div>
+            </div>
+        </form>
 
-<div class="buttons">
-    <input type="submit" class="btn2" name="encrypt" value="Encrypt">
-    <!-- <input type="submit" class="btn2" name="decrypt" value="Decrypt"> -->
-</div>
+        <form action="/rsa/decode" method="post">
+            <div class="aajibaicontainer">
+                <div class="container">
+                    <!-- <label for="p" class="form-label"></label> -->
+                    <input type="text" class="textbox" id="p" name="text" placeholder="Enter the ciphertext">
+                    <input type="text" class="textbox" id="p" name="PriK" placeholder="Enter the Private Key">
+                </div>
 
-    <div class="container">
-        <textarea id="textbox" name="textbox2" class="textbox2" rows="10" cols="50" 
-        placeholder="Output" spellcheck="false">{% if output is defined %}{{output}}{% endif %}
-        </textarea></div>
-</div>
+                <div class="buttons">
+                    <!-- <input type="submit" class="btn2" name="encrypt" value="Encrypt"> -->
+                    <input type="submit" class="btn2" name="decrypt" value="Decrypt">
+                </div>
 
-<div class="aajibaicontainer">
-    <div class="container">
-        <!-- <label for="p" class="form-label"></label> -->
-        <input type="text" class="textbox" id="p" name="p" placeholder="Enter the ciphertext">
-        <input type="text" class="textbox" id="p" name="p" placeholder="Enter the Private Key">
-    </div>
-
-    <div class="buttons">
-        <!-- <input type="submit" class="btn2" name="encrypt" value="Encrypt"> -->
-        <input type="submit" class="btn2" name="decrypt" value="Decrypt">
-    </div>
-
-<div class="container">
-<textarea id="textbox" name="textbox2" class="textbox2" rows="10" cols="50" 
-placeholder="Output" spellcheck="false">{% if output is defined %}{{output}}{% endif %}
-</textarea></div>
-
-</div>
-</div>
-</div>
-</div>
-</form>
-</section>
+                <div class="container">
+                    <textarea id="textbox" name="textbox2" class="textbox2" rows="10" cols="50" placeholder="Output"
+                        spellcheck="false">{% if Decrypted is defined %}{{Decrypted}}{% endif %}
+                    </textarea>
+                </div>
+            </div>
+        </form>
+    </section>
 
 
-<section class="cipherinfo">
-    <h2>What is RSA?</h2>
-    <p class="container1" style="display: flex;  
-    margin-left: 325px; margin-bottom: 50px;">RSA is a public-key cryptosystem that is widely used for secure data transmission. <br> <br>
-        It was first published in 1977 by Ron Rivest, Adi Shamir, and Leonard Adleman, and it is named after them. <br><br>
-        RSA works on the principle that it is easy to multiply large numbers, but difficult to factor large numbers. <br><br>
-        The public key consists of two large numbers, e and n, which are the product of two large prime numbers. <br><br>
-        The private key is a number, d, which is calculated using e and n and the two large prime numbers. <br><br>
+    <section class="cipherinfo">
+        <h2>What is RSA?</h2>
+        <p class="container1" style="display: flex;  margin-left: 325px; margin-bottom: 50px;">RSA is a public-key
+            cryptosystem that is widely used for secure data transmission. <br> <br>
+            It was first published in 1977 by Ron Rivest, Adi Shamir, and Leonard Adleman, and it is named after them.
+            <br><br>
+            RSA works on the principle that it is easy to multiply large numbers, but difficult to factor large numbers.
+            <br><br>
+            The public key consists of two large numbers, e and n, which are the product of two large prime numbers.
+            <br><br>
+            The private key is a number, d, which is calculated using e and n and the two large prime numbers. <br><br>
+
         </p>
         <h2>How does RSA work?</h2>
         <p class="container2" style="line-height: 2; text-align: start; margin-left: 325px; ">
-           <b style="font-size: 20px;"> # Key Generation</b><br> 
-           <img src="static/rsa2.png" alt="rsa2" style="width: 700px; height: 450px; border-radius: 10px; margin: 50px;">
-           <br>
-RSA key generation involves the following steps: <br>  
-- Prime Number Generation: <br>
-  - Select two large prime numbers, p and q. <br>
-- Modulus Calculation: <br>
-  - Compute n = p x q. <br>
-- Totient Calculation: <br>
-  - Calculate ɸ(n) = (p - 1) x (q - 1). <br>
-- Public Key Exponent Selection: <br>
-  - Choose a public exponent (e) that is coprime to ɸ(n).
-- Private Key Calculation: <br>
-  - Determine a private exponent (d) such that d x e ≡ 1 (mod ɸ(n)).
- <br> <br>
-2.2 Encryption <br>
-- Sender obtains the recipient's public key (e, n). <br>
-- Converts the plaintext message (M) to an integer m such that 0 < m < n. <br>
-- Computes the ciphertext (C) using the formula C ≡ m^(e) (mod n). <br>
-- Sends the ciphertext to the recipient. <br>
- <br>
-<br>
-2.3 Decryption <br>
-- Recipient uses their private key (d) to compute m from C using m ≡ C^(d) (mod n). <br>
-- Converts m back to the original plaintext message (M). <br>
-<br><b> 
-3. Diagram <br> <br> <br>
-<img src="static/rsa1.png" alt="rsa1" style="width: 700px; height: 300px; margin-left: 50px; border-radius: 10px; ">
-</b>  <br> <br>
-4. Use Case in a Real-World Scenario  <br> <br>
-4.1 Secure Communication <br>
-- Scenario: Secure Email Communication <br>
-  - Background:  Alice wants to send a confidential email to Bob. <br>
-  - Implementation: Bob generates a key pair and shares his public key with Alice. Alice encrypts the email using Bob's public key. Bob decrypts the email using his private key. <br>
- <br>
-4.2 Digital Signatures <br>
-- Scenario: Digital Document Signing
-  - Background: Alice wants to digitally sign a contract.
-  - Implementation: Alice uses her private key to create a digital signature for the document. Anyone with Alice's public key can verify the authenticity of the signature.
- <br> <br>
- 4.3 Secure Online Transactions <br>
-- Scenario: Secure Online Purchases
-  - Background: Bob wants to make a secure online purchase.
-  - Implementation: The online store provides its public key. Bob uses the store's public key to encrypt his payment information. Only the store, with its private key, can decrypt and process the payment.
+            <b style="font-size: 20px;"> # Key Generation</b><br>
+            <img src="static/rsa2.png" alt="rsa2"
+                style="width: 700px; height: 450px; border-radius: 10px; margin: 50px;">
+            <br>
+            RSA key generation involves the following steps: <br>
+            - Prime Number Generation: <br>
+            - Select two large prime numbers, p and q. <br>
+            - Modulus Calculation: <br>
+            - Compute n = p x q. <br>
+            - Totient Calculation: <br>
+            - Calculate ɸ(n) = (p - 1) x (q - 1). <br>
+            - Public Key Exponent Selection: <br>
+            - Choose a public exponent (e) that is coprime to ɸ(n).
+            - Private Key Calculation: <br>
+            - Determine a private exponent (d) such that d x e ≡ 1 (mod ɸ(n)).
+            <br> <br>
+            2.2 Encryption <br>
+            - Sender obtains the recipient's public key (e, n). <br>
+            - Converts the plaintext message (M) to an integer m such that 0 < m < n. <br>
+                - Computes the ciphertext (C) using the formula C ≡ m^(e) (mod n). <br>
+                - Sends the ciphertext to the recipient. <br>
+                <br>
+                <br>
+                2.3 Decryption <br>
+                - Recipient uses their private key (d) to compute m from C using m ≡ C^(d) (mod n). <br>
+                - Converts m back to the original plaintext message (M). <br>
+                <br><b>
+                    3. Diagram <br> <br> <br>
+                    <img src="static/rsa1.png" alt="rsa1"
+                        style="width: 700px; height: 300px; margin-left: 50px; border-radius: 10px; ">
+                </b> <br> <br>
+                4. Use Case in a Real-World Scenario <br> <br>
+                4.1 Secure Communication <br>
+                - Scenario: Secure Email Communication <br>
+                - Background: Alice wants to send a confidential email to Bob. <br>
+                - Implementation: Bob generates a key pair and shares his public key with Alice. Alice encrypts the
+                email using Bob's public key. Bob decrypts the email using his private key. <br>
+                <br>
+                4.2 Digital Signatures <br>
+                - Scenario: Digital Document Signing
+                - Background: Alice wants to digitally sign a contract.
+                - Implementation: Alice uses her private key to create a digital signature for the document. Anyone with
+                Alice's public key can verify the authenticity of the signature.
+                <br> <br>
+                4.3 Secure Online Transactions <br>
+                - Scenario: Secure Online Purchases
+                - Background: Bob wants to make a secure online purchase.
+                - Implementation: The online store provides its public key. Bob uses the store's public key to encrypt
+                his payment information. Only the store, with its private key, can decrypt and process the payment.
 
         </p>
-</section>
+    </section>
 
 
-{% endblock body %}
+    {% endblock body %}
 </body>
