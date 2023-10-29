@@ -82,7 +82,9 @@
 
         <input type="submit" class="btn" name="calc" value="Submit">
         <br>
-        <div class="container">{% if output is defined %}{{output}}{% endif %}
+        <div class="container">{% if output is defined %}{% for cipher,match_percentage in output %}
+            <a href="/{{cipher}}">{{cipher}}</a> &emsp13; {{match_percentage}}<br>
+            {% endfor %}{% endif %}
         </div>
     </div>
 </form>

@@ -93,8 +93,8 @@ def rsa_decode():
 
         return render_template("rsa.html",Decrypted=output)
     
-@app.route('/Ceaser',methods=['GET','POST'])
-def Ceaser():
+@app.route('/Caesar',methods=['GET','POST'])
+def Caesar():
     if request.method == "POST":
         text = request.form["text"]
         shift = int(request.form["shift"])
@@ -105,9 +105,9 @@ def Ceaser():
         else:
             output = "Invalid request"
 
-        return render_template("Ceaser.html", output=output)
+        return render_template("Caesar.html", output=output)
     else:
-        return render_template('Ceaser.html')
+        return render_template('Caesar.html')
     
 
 @app.route('/Hill',methods=['GET','POST'])
@@ -148,8 +148,8 @@ def Shift():
         return render_template('Shift.html')
     
 
-@app.route('/aes',methods=['GET','POST'])
-def aes():
+@app.route('/AES',methods=['GET','POST'])
+def AES():
     if request.method == "POST":
         text = request.form["text"]
         temp_key = request.form["key"]
@@ -202,8 +202,8 @@ def chacha():
         return render_template('chacha.html')
     
 
-@app.route('/md5',methods=['GET','POST'])
-def md5():
+@app.route('/MD5',methods=['GET','POST'])
+def MD5():
     if request.method == "POST":
         text = request.form["text"]
         if 'encrypt' in request.form:
