@@ -26,7 +26,7 @@
         header .logo {
             font-size: 24px;
             height: 10px;
-            
+
         }
 
         header .menu {
@@ -113,16 +113,18 @@
                 font-size: 18px;
             }
         }
-        .menu{
+
+        .menu {
             margin-left: 10px;
             padding-left: 10px;
 
         }
-        img{
+
+        img {
             width: 100px;
             height: 40px;
             margin-left: 20px;
-            
+
             /* align-self: flex-start; */
 
         }
@@ -132,12 +134,12 @@
 <body>
     <!-- Header -->
     <header>
-        
+
         <span class="menu" style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;
             <img src="static/cipherxloogo.png" alt="logo">
         </span>
         <!-- <img src="static/cipherxloogo.png" alt="logo"> -->
-        <a href="/"  style="text-decoration:none; color: #fff;  font-size: 25px;">CipherX</a>
+        <a href="/" style="text-decoration:none; color: #fff;  font-size: 25px;">CipherX</a>
         <ul class="menu">
             <li><a href="/">Home</a></li>
             <li><a href="#">About</a></li>
@@ -151,12 +153,12 @@
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <a href="{{ url_for('rsa') }}">RSA</a>
         <a href="{{ url_for('base64_') }}">Base64</a>
-        <a href="{{ url_for('md5') }}">MD5</a>
-        <a href="{{ url_for('Ceaser') }}">Ceaser</a>
+        <a href="{{ url_for('MD5') }}">MD5</a>
+        <a href="{{ url_for('Caesar') }}">Caesar</a>
         <a href="{{ url_for('Hill') }}">Hill</a>
         <a href="{{ url_for('Shift') }}">Shift</a>
-        <a href="{{ url_for('aes') }}">AES</a>
-        <a href="{{ url_for('des') }}">DES</a>
+        <a href="{{ url_for('AES') }}">AES</a>
+        <a href="{{ url_for('DES') }}">DES</a>
         <a href="{{ url_for('chacha') }}">ChaCha</a>
     </div>
 
