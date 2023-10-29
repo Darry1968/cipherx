@@ -15,7 +15,7 @@ class CipherIdentify():
     def identify_base64_cipher(self, cipher_text):
         # Implement Vigenère cipher recognition logic here
         # You can look for key length patterns or known keywords in the text
-        base64_pattern = re.compile(r'^[A-Za-z0-9+/]*={0,2}==$')
+        base64_pattern = re.compile(r'^[A-Za-z0-9+/]*={0,2}=$')
         if base64_pattern.match(cipher_text):
             match_percentage = len(base64_pattern.match(cipher_text).group()) / len(cipher_text) * 100
             return "base64_", match_percentage
@@ -66,7 +66,30 @@ class CipherIdentify():
             return "Shift", match_percentage
         else:
             return "Shift", 0
+        
+    def identify_rsa_cipher(self, cipher_text):
+    # Implement Shift cipher recognition logic here
+    # Look for patterns where characters are shifted by a consistent number of positions in the alphabet
+        rsa_pattern = re.compile(r'^\d+$')
 
+        if rsa_pattern.match(cipher_text):
+            # To calculate the match percentage for Shift ciphers, you can compare it to the pattern
+            # and calculate the percentage of matching characters.
+            match_percentage = len(rsa_pattern.match(cipher_text).group()) / len(cipher_text) * 100
+            return "RSA", match_percentage
+        else:
+            return "RSA", 0
+
+    def identify_hill_cipher(self, cipher_text):
+        # Implement Hill cipher recognition logic here
+        # You can look for patterns that match the characteristics of Hill ciphers
+        hill_pattern = re.compile(r'^[A-Za-z]{4,16}$')  # Adjust the pattern as needed
+
+        if hill_pattern.match(cipher_text):
+            match_percentage = len(hill_pattern.match(cipher_text).group()) / len(cipher_text) * 100
+            return "Hill", match_percentage
+        else:
+            return "Hill", 0
 
     # Define recognition functions for other ciphers similarly
     def identify_cipher(self, cipher_text):
@@ -78,6 +101,8 @@ class CipherIdentify():
         cipher_recognitions.append(self.identify_caesar_cipher(cipher_text))
         cipher_recognitions.append(self.identify_des_cipher(cipher_text))
         cipher_recognitions.append(self.identify_shift_cipher(cipher_text))
+        cipher_recognitions.append(self.identify_rsa_cipher(cipher_text))
+        cipher_recognitions.append(self.identify_hill_cipher(cipher_text))
         # Add similar functions for other ciphers
 
         # higher percentage to lower percentage
