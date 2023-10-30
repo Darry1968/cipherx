@@ -12,6 +12,22 @@
         padding-bottom: 10px;
     }
 
+    .container{
+        width: 500px;
+        height: 300px;
+        padding: 10px;
+        font-size: 16px;
+        flex-direction: column;
+        text-align: center;
+        /* resize: none; */
+        margin-left: 50px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        margin-right: 10px;
+        border: 1px solid #ccc;
+        background-color: #212F3C;
+        border-radius: 10px;
+    }
     .container1 {
         width: 800px;
         height: 200px;
@@ -101,28 +117,20 @@
         margin: 20px;
         display: flex;
         margin-left: 100x;
-        /* margin-bottom: 200px;
-                margin-left: 100px;
-                margin-top: 200px;
-                margin-right: 50px; */
         border-radius: 5px;
 
     }
-
     .daddycontainer {
         display: flex;
     }
-
     .mommycontainer {
         display: flex;
         flex-direction: row;
     }
-
     .aajibaicontainer {
         display: flex;
         flex-direction: row;
     }
-
     .textbox2 {
         width: 400px;
         height: 250px;
@@ -133,7 +141,6 @@
         background-color: #212F3C;
     }
 </style>
-
 <body>
     <section class="encode">
         <form action="/rsa" method="post">
@@ -172,7 +179,6 @@
                     <input type="text" class="textbox" id="p" name="text" placeholder="Enter the Message">
                     <input type="text" class="textbox" id="p" name="PubK" placeholder="Enter the Public Key">
                 </div>
-
                 <div class="buttons">
                     <input type="submit" class="btn2" name="encrypt" value="Encrypt">
                 </div>
