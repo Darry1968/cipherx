@@ -42,9 +42,8 @@ def rsa():
             p = int(request.form["p"])
             q = int(request.form["q"])
             e = int(request.form["e"])
-            if e < 1 and e > p * q:
-                print("hello")
-                return f"Value of e should be in between 1 < e < {p*q}"
+            # if e < 1 and e > p * q:
+            #     return f"Value of e should be in between 1 < e < {p*q}"
             public, private = obj_rsa.generate_key_pair(p=p, q=q, e=e)
             keys['public'] = public
             keys['private'] = private
