@@ -215,6 +215,14 @@ def MD5():
         return render_template('md5.html',output=output)
     else:
         return render_template('md5.html')
+    
+@app.route('/about',methods=['GET'])
+def about():
+    return render_template('about.html')
+
+@app.route('/contact',methods=['GET'])
+def contact():
+    return render_template('contact.html')
 
 if __name__ == '__main__':
     app.run(debug=False,port=8080,host='0.0.0.0')
