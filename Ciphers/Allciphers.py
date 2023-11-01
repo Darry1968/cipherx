@@ -161,3 +161,23 @@ class Ciphers():
         cipher = AES.new(key, AES.MODE_CBC, iv)
         plaintext = unpad(cipher.decrypt(ciphertext), AES.block_size)
         return plaintext.decode('utf-8')
+    
+    def text_to_hex(self,text):
+        try:
+            # Encode the text as bytes and convert to a hexadecimal string
+            hex_string = text.encode('utf-8').hex()
+            return hex_string
+        except Exception as e:
+            return str(e)
+        
+    def hex_to_text(self,hex_string):
+        try:
+            # Remove any leading "0x" if present
+            if hex_string.startswith("0x"):
+                hex_string = hex_string[2:]
+            
+            # Convert the hexadecimal string to bytes and decode as text
+            text = bytes.fromhex(hex_string).decode('utf-8')
+            return text
+        except Exception as e:
+            return str(e)

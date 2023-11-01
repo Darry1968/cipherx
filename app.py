@@ -216,6 +216,21 @@ def MD5():
     else:
         return render_template('md5.html')
     
+@app.route('/Hex',methods=['GET','POST'])
+def Hex():
+    if request.method == "POST":
+        text = request.form["text"]
+        if 'To text' in request.form:
+            output = obj.hex_to_text(text)
+        elif 'To hex' in request.form:
+            output = obj.text_to_hex(text)
+        else:
+            output = "Invalid request"
+
+        return render_template('hex.html',output=output)
+    else:
+        return render_template('hex.html')
+    
 @app.route('/about',methods=['GET'])
 def about():
     return render_template('about.html')
@@ -225,4 +240,4 @@ def contact():
     return render_template('contact.html')
 
 if __name__ == '__main__':
-    app.run(debug=False,port=8080,host='0.0.0.0')
+    app.run(debug=True,port=8080,host='0.0.0.0')

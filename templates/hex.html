@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block body %}
+<h2>Hex to Text / Text to Hex</h2>
+<style>
+    h2 {
+        font-size: 25px;
+        text-align: center;
+        color: white;
+        background-color: #212F3C;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .container1 {
+
+        width: 500px;
+        height: 200px;
+        border-radius: 7px;
+        margin: 50px;
+        align-items: center;
+        text-align: center;
+        padding-top: 50px;
+        border: 1px solid #ccc;
+        background-color: #212F3C;
+    }
+
+    .textbox {
+        width: 250px;
+        height: 50px;
+        padding: 10px;
+        font-size: 16px;
+        flex-direction: column;
+        text-align: center;
+        resize: none;
+        margin-left: 40px;
+        margin-right: 40px;
+        margin-bottom: 20px;
+        margin-top: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        background-color: #212F3C;
+    }
+</style>
+<form action="/Hex" method="post">
+    <div class="mb-3">
+        <div class="container1">
+            <label for="exampleFormControlInput1" class="form-label">Message :</label>
+            <input type="text" class="textbox" id="exampleFormControlInput1" name="text"
+                placeholder="Enter your text here">
+            <br><br>
+        </div>
+    </div>
+    <input type="submit" class="btn btn-primary mb-3" name="To text" value="To text">
+    <input type="submit" class="btn btn-primary mb-3" name="To hex" value="To hex">
+</form>
+<br>
+<label for="exampleFormControlOutput1" class="form-label">Output :</label>
+<textarea id="textbox" name="textbox" rows="10" cols="50" spellcheck="false">{% if output is defined %}{{output}}{% endif %}
+ </textarea>
+
+{% endblock body %}
