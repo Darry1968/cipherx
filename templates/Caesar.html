@@ -98,23 +98,44 @@
         cursor: pointer;
         margin-bottom: 50px;
     }
+
+
+    .container1 {
+        width: 800px;
+        height: 200px;
+        padding: 10px;
+        font-size: 16px;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+        /* resize: none; */
+        margin-left: 30px;
+        margin-top: 50px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        background-color: #212F3C;
+        border-radius: 5px;
+        display: flex;
+    }
+
+    .container3 {
+        width: 800px;
+        height: 2350px;
+        padding: 10px;
+        font-size: 16px;
+
+        flex-direction: column;
+        text-align: center;
+        
+        margin-left: 50px;
+        margin-top: 50px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        background-color: #212F3C;
+        border-radius: 5px;
+    }
 </style>
 <form action="/Ceaser" method="post">
-    <!-- <div class="mb-3">
-
-        <label for="exampleFormControlInput1" class="form-label">Input :</label>
-        <input type="text" class="form-control form-control-lg" id="exampleFormControlInput1" name="text"
-            placeholder="Enter your text here">
-        <br><br>
-        <label for="exampleFormControlShift" class="form-label">Shift value :</label>
-        <input type="text" class="form-control form-control-lg" id="exampleFormControlInput2" name="shift"
-            placeholder="Enter shift value">
-        <br><br>
-    </div>
-    <input type="submit" class="btn btn-primary mb-3" name="encrypt" value="Encrypt">
-    <input type="submit" class="btn btn-primary mb-3" name="decrypt" value="Decrypt">
-</form>
-<br> -->
     <section class="encode">
         <div class="container">
             <div class="container2">
@@ -172,6 +193,9 @@
         - Decrypted Text: HELLO <br>
         <br>
         4. Diagram <br>
+        <img src="/static/caeser.png" alt="caeser"
+        style="width: 700px; height: 600px;">
+        
         <br>
         5. Use Case in a Real-World Scenario <br>
         # 5.1 Historical Military Communication <br>
